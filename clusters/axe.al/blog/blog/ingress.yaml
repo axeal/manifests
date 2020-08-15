@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: blog
+  namespace: blog
+spec:
+  rules:
+  - host: axe.al
+    http:
+      paths:
+      - backend:
+          serviceName: blog
+          servicePort: 8080
