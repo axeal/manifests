@@ -1,0 +1,39 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: promtail
+  namespace: prometheus
+spec:
+  releaseName: promtail
+  chart:
+    repository: https://grafana.github.io/loki/charts
+    name: promtail
+    version: 0.24.0
+  values:
+    extraScrapConfigs:
+    - job_name: journal
+      journal:
+        path: /var/log/journal
+        max_age: 12h
+        labels:
+          job: systemd-journal
+      relabel_configs:
+      - source_labels:
+        - __journal__systemd_unit
+        target_label: unit
+      - source_labels:
+        - __journal__hostname
+        target_label: hostname
+    extraVolumes:
+    - name: journal
+      hostPath:
+        path: /var/log/journal
+    extraVolumeMounts:
+    - name: journal
+      mountPath: /var/log/journal
+      readOnly: true
+    loki:
+      serviceName: loki
+    serviceMonitor:
+      enabled: true
