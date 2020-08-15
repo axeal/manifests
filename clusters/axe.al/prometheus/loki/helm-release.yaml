@@ -5,7 +5,7 @@ metadata:
   name: loki
   namespace: prometheus
 spec:
-  releaseName: prometheus
+  releaseName: loki
   chart:
     repository: https://grafana.github.io/loki/charts
     name: loki
