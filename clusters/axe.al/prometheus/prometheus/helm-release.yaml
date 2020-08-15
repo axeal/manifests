@@ -1,0 +1,67 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: prometheus-operator
+  namespace: prometheus
+spec:
+  releaseName: prometheus-operator
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: prometheus-operator
+    version: 8.13.8
+  values:
+    alertmanager:
+      ingress:
+        enabled: true
+        annotations:
+          nginx.ingress.kubernetes.io/auth-url: https://auth.axe.al/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
+        hosts:
+        - alerts.axe.al
+    grafana:
+      additionalDataSources:
+      - name: Loki
+        type: loki
+        access: proxy
+        url: http://loki:3100
+        editable: false
+        basicAuth: false
+      ingress:
+        enabled: true
+        annotations:
+          nginx.ingress.kubernetes.io/auth-url: https://auth.axe.al/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
+        hosts:
+        - grafana.axe.al
+    prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          nginx.ingress.kubernetes.io/auth-url: https://auth.axe.al/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
+        hosts:
+        - prometheus.axe.al
+      prometheusSpec:
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 2Gi
+        retentionSize: 25GiB
+        serviceMonitorSelectorNilUsesHelmValues: false
+        storageSpec:
+          volumeClaimTemplate:
+            resources:
+              requests:
+                storage: 25Gi
+            spec: 
+              accessModes:
+              - ReadWriteOnce
+    kubeEtcd:
+      enabled: false
+    kubeProxy:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeControllerManager:
+      enabled: false    
