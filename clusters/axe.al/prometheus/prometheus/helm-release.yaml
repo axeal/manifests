@@ -51,10 +51,10 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
-            resources:
-              requests:
-                storage: 25Gi
-            spec: 
+            spec:
+              resources:
+                requests:
+                  storage: 25Gi
               accessModes:
               - ReadWriteOnce
     kubeEtcd:
