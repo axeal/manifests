@@ -1,0 +1,45 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: oauth2-proxy
+  namespace: oauth2-proxy
+spec:
+  releaseName: oauth2-proxy
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: oauth2-proxy
+    version: 3.2.0
+  values:
+    config:
+      existingSecret: oauth2-proxy
+    ingress:
+      enabled: true
+      hosts:
+      - auth.axe.al
+    extraArgs:
+      provider: github
+      whitelist-domain: .axe.al
+      cookie-domain: .axe.al
+    replicaCount: 2
+    podLabels:
+      app.kubernetes.io/name: oauth2-proxy
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                - oauth2-proxy
+            topologyKey: kubernetes.io/hostname
+    resources:
+      requests:
+        cpu: 10m
+        memory: 50Mi
+      limits:
+        cpu: 100m
+        memory: 100Mi
