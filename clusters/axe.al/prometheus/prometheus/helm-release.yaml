@@ -27,6 +27,9 @@ spec:
         url: http://loki:3100
         editable: false
         basicAuth: false
+      sidecar:
+        dashboards:
+          searchNamespace: ALL
       ingress:
         enabled: true
         annotations:
