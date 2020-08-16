@@ -3,6 +3,7 @@ apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
   name: vpa-ca-crt
+  namespace: kube-system
 spec:
   secretName: vpa-ca-tls
   commonName: "vpa_webhook_ca"
