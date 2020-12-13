@@ -13,7 +13,7 @@ spec:
         kind: GitRepository
         name: longhorn
         namespace: longhorn-system
-      interval: 1m
+      interval: 30m
   values:
     ingress:
       enabled: true
