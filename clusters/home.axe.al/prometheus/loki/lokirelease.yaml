@@ -22,4 +22,6 @@ spec:
         retention_deletes_enabled: true
         retention_period: 672h
     serviceMonitor:
-      enabled: true 
+      enabled: true
+    persistence:
+      enabled: true

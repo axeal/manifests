@@ -56,6 +56,14 @@ spec:
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              resources:
+                requests:
+                  storage: 25Gi
+              accessModes:
+              - ReadWriteOnce
     kubeEtcd:
       enabled: false
     kubeProxy:
@@ -63,4 +71,4 @@ spec:
     kubeScheduler:
       enabled: false
     kubeControllerManager:
-      enabled: false    
+      enabled: false
