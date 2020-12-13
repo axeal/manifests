@@ -18,6 +18,7 @@ spec:
     ingress:
       enabled: true
       host: longhorn.home.axe.al
+      tls: true
       tlsSecret: longhorn-ingress-cert
       annotations:
         cert-manager.io/cluster-issuer: cluster-issuer
