@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homebridge
+  name: homebridge
+  namespace: homebridge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homebridge
+  template:
+    metadata:
+      labels:
+        app: homebridge
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - image: oznu/homebridge
+        imagePullPolicy: Always
+        name: homebridge
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /homebridge
+          mountPropagation: None
+          name: homebridge
+        - mountPath: /homebridge/config.json
+          mountPropagation: None
+          name: homebridge-config
+          subPath: config.json
+        - mountPath: /homebridge/package.json
+          mountPropagation: None
+          name: homebridge-config
+          subPath: package.json
+        - mountPath: /homebridge/startup.sh
+          mountPropagation: None
+          name: homebridge-config
+          subPath: startup.sh
+      hostNetwork: true
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 911
+      volumes:
+      - secret:
+          defaultMode: 420
+          items:
+          - key: startup.sh
+            mode: 493
+            path: startup.sh
+          - key: config.json
+            path: config.json
+          - key: package.json
+            path: package.json
+          secretName: homebridge-config
+          optional: false
+        name: homebridge-config
+      - hostPath:
+          path: /homebridge
+          type: DirectoryOrCreate
+        name: homebridge
