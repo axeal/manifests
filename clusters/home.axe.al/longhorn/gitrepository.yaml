@@ -1,0 +1,15 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  interval: 60m
+  url: https://github.com/longhorn/longhorn
+  ref:
+    branch: v1.1.0
+  ignore: |
+    # exclude all
+    /*
+    # include charts directory
+    !/chart/

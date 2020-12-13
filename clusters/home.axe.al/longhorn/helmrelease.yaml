@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./chart/
+      version: '1.1.0-rc1'
+      sourceRef:
+        kind: GitRepository
+        name: longhorn
+        namespace: longhorn-system
+      interval: 1m
+  values:
+    ingress:
+      enabled: true
+      host: longhorn.home.axe.al
+      tlsSecret: longhorn-ingress-cert
+      annotations:
+        cert-manager.io/cluster-issuer: cluster-issuer
