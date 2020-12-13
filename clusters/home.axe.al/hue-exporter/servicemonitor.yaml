@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: hue-exporter
+  namespace: hue-exporter
+spec:
+  endpoints:
+  - interval: 60s
+    path: /metrics
+    port: exporter
+    scrapeTimeout: 30s
+  jobLabel: hue-exporter
+  namespaceSelector:
+    matchNames:
+    - hue-exporter
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hue-exporter

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: hue-exporter
+  name: hue-exporter
+  namespace: hue-exporter
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hue-exporter
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hue-exporter
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - image: mitchellrj/hue_exporter:0.2.2-arm7
+        name: hue-exporter
+        ports:
+        - containerPort: 9366
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+        - mountPath: /etc/hue_exporter
+          name: hue-exporter
+      volumes:
+      - secret:
+          secretName: hue-exporter
+        name: hue-exporter
