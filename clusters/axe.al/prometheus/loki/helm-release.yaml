@@ -1,15 +1,19 @@
----
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: loki
   namespace: prometheus
 spec:
-  releaseName: loki
+  interval: 5m
   chart:
-    repository: https://grafana.github.io/loki/charts
-    name: loki
-    version:  0.31.0
+    spec:
+      chart: loki
+      version: '2.2.0'
+      sourceRef:
+        kind: HelmRepository
+        name: grafana
+        namespace: prometheus
+      interval: 30m
   values:
     config:
       chunk_store_config:
@@ -20,4 +24,4 @@ spec:
     persistence:
       enabled: true
     serviceMonitor:
-      enabled: true 
+      enabled: true
