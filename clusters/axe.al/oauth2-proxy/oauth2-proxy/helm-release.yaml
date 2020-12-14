@@ -14,7 +14,7 @@ spec:
         name: helm
         namespace: oauth2-proxy
       interval: 1m
-values:
+  values:
     config:
       existingSecret: oauth2-proxy
     ingress:
