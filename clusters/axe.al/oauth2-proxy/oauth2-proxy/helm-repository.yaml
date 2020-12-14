@@ -5,4 +5,4 @@ metadata:
   namespace: oauth2-proxy
 spec:
   interval: 60m
-  url: https://kubernetes-charts.storage.googleapis.com
+  url: https://charts.helm.sh/stable
