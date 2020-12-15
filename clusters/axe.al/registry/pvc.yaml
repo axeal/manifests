@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: registry
+  namespace: registry
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: scw-bssd
+  volumeMode: Filesystem
+  volumeName: pvc-f8d57b03-e83e-4349-9afb-2f8500ceb71a

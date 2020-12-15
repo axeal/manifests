@@ -1,0 +1,145 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: registry
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: registry-psp
+  namespace: registry
+rules:
+- apiGroups:
+  - policy
+  resourceNames:
+  - privileged
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: registry-psp
+  namespace: registry
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: registry-psp
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:serviceaccounts
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: registry
+  namespace: registry
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: scw-bssd
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: registry
+  name: registry
+  namespace: registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: registry
+  template:
+    metadata:
+      labels:
+        k8s-app: registry
+    spec:
+      containers:
+      - image: registry:2
+        env:
+        - name: REGISTRY_HTTP_TLS_CERTIFICATE
+          value: "/certs/tls.crt"
+        - name: REGISTRY_HTTP_TLS_KEY
+          value: "/certs/tls.key"
+        - name: REGISTRY_AUTH
+          value: "htpasswd"
+        - name: REGISTRY_AUTH_HTPASSWD_REALM
+          value: "Registry Realm"
+        - name: REGISTRY_AUTH_HTPASSWD_PATH
+          value: "/auth/htpasswd"
+        imagePullPolicy: Always
+        name: registry
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        volumeMounts:
+        - name: cloudflare-origin-ca
+          mountPath: "/certs"
+          readOnly: true
+        - name: htpasswd
+          mountPath: "/auth"
+          readOnly: true
+        - name: registry
+          mountPath: /var/lib/registry
+      volumes:
+      - name: cloudflare-origin-ca
+        secret:
+          secretName: cloudflare-origin-ca
+      - name: htpasswd
+        secret:
+          secretName: htpasswd
+      - name: registry
+        persistentVolumeClaim:
+          claimName: registry
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: registry
+  name: registry
+  namespace: registry
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    k8s-app: registry
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: registry
+  namespace: registry
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+  - host: registry.axe.al
+    http:
+      paths:
+      - backend:
+          serviceName: registry
+          servicePort: 5000
+  tls:
+  - hosts:
+    - registry.axe.al
