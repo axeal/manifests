@@ -1,26 +1,10 @@
----
-apiVersion: cert-manager.io/v1alpha2
-kind: Certificate
-metadata:
-  name: vpa-ca-crt
-  namespace: kube-system
-spec:
-  secretName: vpa-ca-tls
-  commonName: "vpa_webhook_ca"
-  isCA: true
-  issuerRef:
-    name: selfsigning-issuer
-    kind: ClusterIssuer
-
----
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
 metadata:
   name: vpa-ca-issuer
   namespace: kube-system
 spec:
-  ca:
-    secretName: vpa-ca-tls
+  selfSigned: {}
 
 ---
 apiVersion: cert-manager.io/v1alpha2
