@@ -35,21 +35,6 @@ subjects:
   name: system:serviceaccounts
 
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: registry
-  namespace: registry
-spec:
-  accessModes:
-    - ReadWriteOnce
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 50Gi
-  storageClassName: scw-bssd
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
