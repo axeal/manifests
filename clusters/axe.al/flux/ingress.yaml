@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: receiver
+  namespace: flux-system
+spec:
+  rules:
+  - host: flux.axe.al
+    http:
+      paths:
+      - backend:
+          serviceName: notification-controller
+          servicePort: 80
