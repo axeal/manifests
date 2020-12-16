@@ -56,6 +56,7 @@ spec:
             memory: 2Gi
         retentionSize: 25GiB
         serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
             spec:
