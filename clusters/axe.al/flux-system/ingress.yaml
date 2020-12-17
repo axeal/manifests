@@ -9,5 +9,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: notification-controller
-          servicePort: 80
+          service:
+            name: notification-controller
+            port: 80

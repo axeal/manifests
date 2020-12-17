@@ -92,8 +92,9 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: registry
-          servicePort: 5000
+          service:
+           name: registry
+           port: 5000
   tls:
   - hosts:
     - registry.axe.al
