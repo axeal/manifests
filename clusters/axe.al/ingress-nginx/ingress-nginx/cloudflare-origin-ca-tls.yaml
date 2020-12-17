@@ -14,19 +14,3 @@ spec:
       name: cloudflare-origin-ca-tls
       namespace: ingress-nginx
     type: kubernetes.io/tls
-
----
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  creationTimestamp: null
-  name: htpasswd
-  namespace: registry
-spec:
-  encryptedData:
-    htpasswd: AgAVq+OdmTew2wJe99h6ko/CH1Vy0qCawOjCxEJ4LRqojIsTESwmRzq4RmwpO7xCQbKEq/JW15GDepFeJNs7ZQA9ebs3f+WVXW4Y5LLxJk5FTf5G66azEy35s4CHu9JMGYEqj7HP3u9kQGjiE9OHn54lj+Pqs1d6G3sDv0TtzvHdcJ2LiruRBLdghiHP8eHjO6ife1dRcnzPZogF1tc3lXVOehg5H4/Pp7UFPCL1QkUkQ9Nu4Kk2Hawwg9ka7u9ELnW+EZxwvcAxvOlzHu0xSIhtSlIUPqv5rdr7gbHZOGTiJN8wqSnSykgIQyZ5TjZuiVZtAbJWxJB2ZjqOzCmPm2icBoYXTohxhQ7+oxIWLUK55xhvnkwMZg2mQWs6h9RGvgEAWERyGn38N8clkjJcgonhnLNoX2ZZW1lJP+tmOR+QsUSa5gbJOac1NQr/TnNDQfkkIaZ3B5RvT3JonH/x9Tb+k25XrEySw9fu095OCKuxC/d5JG6AhS9/zI2hSINySHBesFKuY7gRjpHJQybSKXmS27oHmFMPp6b+mKEmdVKmo/sbyIfyDL2mBqUDkc/54kWEXkO4DxDpi9GeuyBML2oUk0kcgoVMM3Nlbol0sFSVgL+asFZX1uqWz/GVjG9RmfJGlEgQwlT/PsGRP07wK9nFlZL0t4yTonol9nzZA0ux3kQSGi6DcliIdN1dQ+QPJSVxDF9I6ShhGoNbgqjxkOnd76bwS0xkv0sd+MVdJqLUfjx1cBWQOHx4adihUw4u8gGHfRGnksgPtiZH8C2DyqZXDTJdlz43TUYP6PIDYVW29UmsGei6Kg+/vZ0=
-  template:
-    metadata:
-      creationTimestamp: null
-      name: htpasswd
-      namespace: registry
