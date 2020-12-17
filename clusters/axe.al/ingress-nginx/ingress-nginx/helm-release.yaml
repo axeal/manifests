@@ -30,5 +30,3 @@ spec:
         requests:
           cpu: 10m
           memory: 200Mi
-    podSecurityPolicy:
-      enabled: true

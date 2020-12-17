@@ -15,9 +15,6 @@ spec:
         namespace: cert-manager
       interval: 30m
   values:
-    global:
-      podSecurityPolicy:
-        enabled: true
     prometheus:
       enabled: true
       serviceMonitor:
