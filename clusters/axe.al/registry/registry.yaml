@@ -40,7 +40,7 @@ spec:
         - containerPort: 5000
           protocol: TCP
         volumeMounts:
-        - name: cloudflare-origin-ca
+        - name: cloudflare-origin-ca-tls
           mountPath: "/certs"
           readOnly: true
         - name: htpasswd
@@ -49,9 +49,9 @@ spec:
         - name: registry
           mountPath: /var/lib/registry
       volumes:
-      - name: cloudflare-origin-ca
+      - name: cloudflare-origin-ca-tls
         secret:
-          secretName: cloudflare-origin-ca
+          secretName: cloudflare-origin-ca-tls
       - name: htpasswd
         secret:
           secretName: htpasswd
