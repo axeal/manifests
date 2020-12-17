@@ -11,4 +11,5 @@ spec:
       - backend:
           service:
             name: notification-controller
-            port: 80
+            port:
+              number: 80

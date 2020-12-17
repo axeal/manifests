@@ -11,4 +11,5 @@ spec:
       - backend:
           service:
             name: blog
-            port: 8080
+            port:
+              number: 8080

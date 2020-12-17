@@ -94,7 +94,8 @@ spec:
       - backend:
           service:
            name: registry
-           port: 5000
+           port:
+             number: 5000
   tls:
   - hosts:
     - registry.axe.al
