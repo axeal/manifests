@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: ingress-nginx-dashboards
-  namespace: prometheus
+  namespace: ingress-nginx
   labels:
     grafana_dashboard: "true"
 data:

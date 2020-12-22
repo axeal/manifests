@@ -1,17 +1,17 @@
 apiVersion:  networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: blog
-  namespace: blog
+  name: receiver
+  namespace: flux-system
 spec:
   rules:
-  - host: axe.al
+  - host: flux.axe.al
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: blog
+            name: notification-controller
             port:
-              number: 8080
+              number: 80

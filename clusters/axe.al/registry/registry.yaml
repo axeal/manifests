@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: registry
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: registry
+  name: registry
+  namespace: registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: registry
+  template:
+    metadata:
+      labels:
+        k8s-app: registry
+    spec:
+      containers:
+      - image: registry:2
+        env:
+        - name: REGISTRY_HTTP_TLS_CERTIFICATE
+          value: "/certs/tls.crt"
+        - name: REGISTRY_HTTP_TLS_KEY
+          value: "/certs/tls.key"
+        - name: REGISTRY_AUTH
+          value: "htpasswd"
+        - name: REGISTRY_AUTH_HTPASSWD_REALM
+          value: "Registry Realm"
+        - name: REGISTRY_AUTH_HTPASSWD_PATH
+          value: "/auth/htpasswd"
+        imagePullPolicy: Always
+        name: registry
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        volumeMounts:
+        - name: cloudflare-origin-ca-tls
+          mountPath: "/certs"
+          readOnly: true
+        - name: htpasswd
+          mountPath: "/auth"
+          readOnly: true
+        - name: registry
+          mountPath: /var/lib/registry
+      volumes:
+      - name: cloudflare-origin-ca-tls
+        secret:
+          secretName: cloudflare-origin-ca-tls
+      - name: htpasswd
+        secret:
+          secretName: htpasswd
+      - name: registry
+        persistentVolumeClaim:
+          claimName: registry
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: registry
+  name: registry
+  namespace: registry
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    k8s-app: registry
+
+---
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: registry
+  namespace: registry
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+  - host: registry.axe.al
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+           name: registry
+           port:
+             number: 5000
+  tls:
+  - hosts:
+    - registry.axe.al

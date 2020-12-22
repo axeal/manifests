@@ -23,5 +23,3 @@ spec:
         retention_period: 672h
     serviceMonitor:
       enabled: true
-    persistence:
-      enabled: true
