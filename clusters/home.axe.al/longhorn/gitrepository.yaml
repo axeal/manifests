@@ -7,7 +7,7 @@ spec:
   interval: 60m
   url: https://github.com/longhorn/longhorn
   ref:
-    branch: v1.1.0
+    branch: master
   ignore: |
     # exclude all
     /*
