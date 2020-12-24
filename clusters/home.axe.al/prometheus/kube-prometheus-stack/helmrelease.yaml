@@ -33,6 +33,8 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: cluster-issuer
+          nginx.ingress.kubernetes.io/auth-url: https://auth.axe.al/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
         hosts:
         - grafana.home.axe.al
         tls:
@@ -47,6 +49,8 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: cluster-issuer
+          nginx.ingress.kubernetes.io/auth-url: https://auth.axe.al/oauth2/auth
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
         hosts:
         - prometheus.home.axe.al
         tls:
