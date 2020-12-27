@@ -13,7 +13,7 @@ rules:
 - apiGroups:
   - 'cert-manager.io'
   resources:
-  - clusterissuer
+  - clusterissuers
   verbs:
   - get
   - list
