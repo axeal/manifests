@@ -18,8 +18,8 @@ spec:
     controller:
       service:
         externalIPs:
-        - 192.168.200.241
-        externalTrafficPolicy: Local
+        - 10.50.29.241
+        externalTrafficPolicy: Cluster
       kind: DaemonSet
       metrics:
         enabled: true
