@@ -17,8 +17,10 @@ spec:
   values:
     controller:
       service:
-        loadBalancerIP: "10.50.29.241"
+        loadBalancerIP: "10.50.29.240"
         externalTrafficPolicy: Cluster
+        annotations:
+          metallb.universe.tf/allow-shared-ip: "true"
       kind: DaemonSet
       metrics:
         enabled: true
