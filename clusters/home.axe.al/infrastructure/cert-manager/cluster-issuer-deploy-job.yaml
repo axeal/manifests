@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
       - name: cluster-issuer-deploy-job
-        image: k8s.gcr.io/hyperkube-amd64:v1.18.5
+        image: k8s.gcr.io/hyperkube:v1.18.5
         command:
         - kubectl
         - apply
