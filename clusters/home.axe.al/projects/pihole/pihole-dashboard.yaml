@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pihole-dashboard
-  namespace: iphole
+  namespace: pihole
   labels:
     grafana_dashboard: "true"
 data:
