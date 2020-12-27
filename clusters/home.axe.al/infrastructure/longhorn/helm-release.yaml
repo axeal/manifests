@@ -14,8 +14,6 @@ spec:
         name: longhorn
         namespace: longhorn-system
       interval: 30m
-  install:
-    skipCRDs: true
   values:
     ingress:
       enabled: true
