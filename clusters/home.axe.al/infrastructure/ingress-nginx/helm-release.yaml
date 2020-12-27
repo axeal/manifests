@@ -17,8 +17,7 @@ spec:
   values:
     controller:
       service:
-        externalIPs:
-        - 10.50.29.241
+        loadBalancerIP: "10.50.29.241"
         externalTrafficPolicy: Cluster
       kind: DaemonSet
       metrics:
