@@ -15,7 +15,7 @@ spec:
         namespace: prometheus
       interval: 30m
   install:
-    skipCrds: true
+    skipCRDs: true
   values:
     alertmanager:
       enabled: false
