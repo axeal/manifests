@@ -108,6 +108,44 @@ spec:
   type: ClusterIP
 
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-udp-lb
+  namespace: pihole
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "true"
+spec:
+  selector:
+    app: pihole
+  loadBalancerIP: 10.50.29.240
+  ports:
+  - port: 53
+    targetPort: 53
+    protocol: UDP
+    name: dns
+  type: LoadBalancer
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-tcp-lb
+  namespace: pihole
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "true"
+spec:
+  selector:
+    app: pihole
+  loadBalancerIP: 10.50.29.240
+  ports:
+  - port: 53
+    targetPort: 53
+    protocol: TCP
+    name: dns
+  type: LoadBalancer
+
+---
 apiVersion:  networking.k8s.io/v1
 kind: Ingress
 metadata:
