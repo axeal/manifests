@@ -16,6 +16,15 @@ spec:
         app: homebridge
     spec:
       automountServiceAccountToken: false
+      initContainers:
+      - name: config
+        image: busybox
+        volumeMounts:
+        - mountPath: /homebridge-config
+          name: homebridge-config
+        - mountPath: /homebridge
+          name: homebridge
+        command: ['sh', '-c', 'cp -RLf /homebridge-config/* /homebridge/ && chown -R 911:911 /homebridge']
       containers:
       - image: oznu/homebridge
         imagePullPolicy: Always
@@ -25,39 +34,28 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - mountPath: /homebridge
-          mountPropagation: None
           name: homebridge
-        - mountPath: /homebridge/config.json
-          mountPropagation: None
-          name: homebridge-config
-          subPath: config.json
-        - mountPath: /homebridge/package.json
-          mountPropagation: None
-          name: homebridge-config
-          subPath: package.json
-        - mountPath: /homebridge/startup.sh
-          mountPropagation: None
-          name: homebridge-config
-          subPath: startup.sh
       hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       restartPolicy: Always
       securityContext:
         fsGroup: 911
       volumes:
       - secret:
-          defaultMode: 420
           items:
           - key: startup.sh
-            mode: 493
             path: startup.sh
           - key: config.json
             path: config.json
           - key: package.json
             path: package.json
+          - key: auth.json
+            path: auth.json
+          - key: AccessoryInfo.0EA9A71E9C57.json
+            path: persist/AccessoryInfo.0EA9A71E9C57.json
+          - key: IdentifierCache.0EA9A71E9C57.json
+            path: persist/IdentifierCache.0EA9A71E9C57.json
           secretName: homebridge-config
-          optional: false
         name: homebridge-config
-      - hostPath:
-          path: /homebridge
-          type: DirectoryOrCreate
+      - emptyDir: {}
         name: homebridge
