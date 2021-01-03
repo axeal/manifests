@@ -1,0 +1,36 @@
+apiVersion: v1
+data:
+    password: ENC[AES256_GCM,data:2pZ35NWqJCEQOAKAjaU+JyuJDTWr7K9z9h+XAZbziRK+R8vDgmSxSR5mcOdhwYv+,iv:V5gECtFKBPmlDe4QSsfwUOcnxAxckSrXGa7r8n/rUY8=,tag:G2y0k0ZOQX5hxdT+bSneug==,type:str]
+    username: ENC[AES256_GCM,data:Rsj9RUuY7mQ=,iv:SoXyaZdIPH88Po7CzMBCXEmDrY9FYTzMfeestRRY2bk=,tag:Aij1ep3pb1jQF9x6X5/vSQ==,type:str]
+kind: Secret
+metadata:
+    name: dockerhub
+    namespace: mirror
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    lastmodified: '2021-01-03T13:33:00Z'
+    mac: ENC[AES256_GCM,data:1Zm7DfsVogMFdHSTalsAWaCG5dSgzqQ9ikAi2SR4d4LGu3UOoCAYjc0Yus5F2iZJmtzsxLcqTxVz9qxjdcaMw/UAVZNrOrra/UmsRaYPd7cinbLFm1xbr8P3HVV0Z3axlhzcnA+8G1KoZgiU9SePGxRxkOBd+y/c8JB6tbBKt+Q=,iv:PSlAs963dGajN0I89+GNYqvlhI1aFeuIa7MM9DrnI6E=,tag:0ElapCaFTKmsHO6ropl7+Q==,type:str]
+    pgp:
+    -   created_at: '2021-01-03T13:33:00Z'
+        enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQGMA/nv6Q12Xr1TAQv/SyMilL0cTwnNSl6W5LGyRPbe7fVDTM7VX3vZ5ejEjhcC
+            MyNtQdcK1gVzoHU/xniP1b5hcGC1fusWbbIV0K6X6F9ua8vEaQB8fOZsnvxUP44V
+            z/GPbPlWYp3CLTNxzQVV/YJaLIXpWDJgo09X9QysBEEwZM1mf4RVNiU+tX+okbOP
+            D+c3lFcf7ef0tYF1Qllv+IuKeu2noGpGTzqxFrj9JjXPpsLWowxqwvQ5oa1TEKgO
+            Wa12KjdLi7esqZlGAPYD0mirv0Z+w3MPQgP64+oNHyiowYIjZS1WPzWxFbpgD1+O
+            sJmGeAilLjaGXEeqdraw3nioR37svV44mapM16e6vg47WkFPhSE0ziP9GS2hNCsU
+            xtb3Y+RsoENIXsLLcvxVOwUHCrWpNqBsL6RhTZENCK9qMqR4r8EdHNuIVjEcmzVA
+            Sb5qcps+7/bhYTi6WX/DzWQ3kNLj//Ew6wmoRtdCSR7DxRWyVgaUv8moVDpcCZZb
+            qeEMdrw+QKwevXaUMGw60l4BCK8DtoHoQUH92g4VCXvbVALi1ErgJ1iO15sFghp6
+            gg4/+ILNC4yfSv9QWjb/aTWbISz4hq3L+RqGzBqivtu542Bn7IDeZG2wKrKRaw5l
+            +YPlQEa8Nzxi/TNNQFum
+            =E+YO
+            -----END PGP MESSAGE-----
+        fp: 80F070D138EBF2FF4F31AB9C4413F3681DD2FBB0
+    encrypted_regex: ^(data|stringData)$
+    version: 3.6.1

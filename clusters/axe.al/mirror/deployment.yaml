@@ -1,0 +1,112 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: mirror
+  name: mirror
+  namespace: mirror
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: mirror
+  template:
+    metadata:
+      labels:
+        k8s-app: mirror
+    spec:
+      containers:
+      - image: registry:2
+        env:
+        - name: REGISTRY_HTTP_TLS_CERTIFICATE
+          value: "/certs/tls.crt"
+        - name: REGISTRY_HTTP_TLS_KEY
+          value: "/certs/tls.key"
+        - name: REGISTRY_AUTH
+          value: "htpasswd"
+        - name: REGISTRY_AUTH_HTPASSWD_REALM
+          value: "Registry Realm"
+        - name: REGISTRY_AUTH_HTPASSWD_PATH
+          value: "/auth/htpasswd"
+        - name: REGISTRY_PROXY_REMOTEURL
+          value: "https://registry-1.docker.io"
+        - name: REGISTRY_PROXY_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: dockerhub
+              key: username
+        - name: REGISTRY_PROXY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dockerhub
+              key: password
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: "true"
+        imagePullPolicy: Always
+        name: registry
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        volumeMounts:
+        - name: cloudflare-origin-ca-tls
+          mountPath: "/certs"
+          readOnly: true
+        - name: htpasswd
+          mountPath: "/auth"
+          readOnly: true
+        - name: registry
+          mountPath: /var/lib/registry
+      volumes:
+      - name: cloudflare-origin-ca-tls
+        secret:
+          secretName: cloudflare-origin-ca-tls
+      - name: htpasswd
+        secret:
+          secretName: htpasswd
+      - name: registry
+        emptyDir:
+          sizeLimit: 10Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: mirror
+  name: mirror
+  namespace: mirror
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    k8s-app: mirror
+
+---
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mirror
+  namespace: mirror
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 500m
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  rules:
+  - host: mirror.axe.al
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mirror
+            port:
+              number: 5000
+  tls:
+  - hosts:
+    - mirror.axe.al
