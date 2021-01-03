@@ -21,7 +21,7 @@ spec:
         args:
         - --source=ingress
         - --domain-filter=axe.al
-        - --zone-id-filter=$CF_ZONE_ID
+        - --zone-id-filter=$(CF_ZONE_ID)
         - --provider=cloudflare
         - --cloudflare-proxied
         env:
