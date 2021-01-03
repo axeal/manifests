@@ -1,35 +1,37 @@
-apiVersion: v1
-data:
-    external-dns.yaml: ENC[AES256_GCM,data:OucrPnurSmv/nYd/+TtrH2p+L08qcMqCvDLTUY8EzyWZoi/TcaI95pYmYeeIj+gMSQBz3da5fOprlpIYHXoNgj0Kb4kPjN4hdhPZXEC7gYq+lLPskoKJR2UvMermxposjdFrX3wI+niUssHbLNPUBvCcVUnWB8HVIbDTAszL6sFs3h15AkVRVJFMypisfR1c2RJ6vzYm00Xi5B7PnyAo06RBXjH2C2OmNXn+NOOrp+MvwndgnXJvMKcdwgsaFsh3vBzDSj76D8MNncx0lDp8hSmAlZlGjntU1U0jqNAaUwRKutrcpP2Ybhalzwjs6zmxaAATxBF1rLzVJBvqfjT3nMhwsJWcFWVJb/ypvT77YxbiXOwOx2wCLOZfAnDWcSAmBWR6IeW+QCdHvRgqW+JU40JMvnA990LX1iebWcGK+C2EyH+hd6zdW2wDcbr04AX0R7Z7ap8URHL8sn5OEm1YFMj/L/kZA7LkpgbG6v3ajEk3Q1wwY1AqwTtRrsZFeSFjez5GODZt0nLXo6gnR8+GP3enBon3zKJ7NaECbX6ArcxU+0EZxhfVFuxsdUw5maiyj6EoxczUBIpTZgJONSJbX2VKcLGNSRrPj10r012+Y43zY4hu/NTnrzKDLxx9OFauvGPUYNa2TtddVD7VIHwRT5HdAFjIUnTehhjaIYesIiQSC8pKmU0VYW/EbTt24VQ44f2T1fviIXJsUw1/5KxWzXWYaSmYdB4miQM0MJ/RiyXSeCKD3n4HuRJ2QAG2ZOMaU18ZDBfnnJ2SS4o6EjbdARdQTShQlwlOTAP85ez3jzHYYTgl426j5ApHH1X2hY9zIkutyY5lXs8koYdxE5UP+Gkcf0d6ce1Mrt0SjVyQ3mOxfLR38cGIXcSrXwcUV794W9B5NlYAal+0p5sUtbl/x0/1z+QneU/GaWj1bNduCUePU3aAnZWQ4dzzRr/ycS/btc20VKnPs8WvYtYXDGf10kmBNDZGQ1GRxN8KMK6K12QTtqKESscgIbaIFhO/PdGhrMg4S8XYZWnhEfG6ACjOah6dsDdP4PEHtvLQSGhzYekzQ9qK+hJjmRIAi7rZDXiHLNvPHBo/TW+tUGyjlw3P7k7lnpC0YZUjVQE3uFFAHrYiOo2D6xXK66UC6vc4pYPUh8l/yMz8LJDzKHD6GVjN/TrX7ifvoP4KlwFPYN9Bt5ZiDDkz4PPLfY+2/EXRNfB0sP2HE8bRfx67GnWze4PWfU+N2Gsm+WGBgZWvY21v6ncoNexpOs5M0z+DIg3HA1XpfBzYAIqnh+SeEAPlPE+sevaOxhbCSiCMSSmibUQexVsqYBABJ0GH4j3hFog=,iv:/YsBc+XAJv1vMPVV6gUJ8PzddxXd+vjdRZvtaXEAvxw=,tag:ROaBPwY9QkWLMBfrLNCr5w==,type:str]
-kind: Secret
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-    name: external-dns
-    namespace: external-dns
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    lastmodified: '2020-12-28T19:09:42Z'
-    mac: ENC[AES256_GCM,data:H3Fo1TcPMH8gF5nic4CcIL/L1K+vBWo09LYp2Lw65/sLJhucUyS+KQ0X9oM7C6EoFqfbJ4lqxREwLHQEAECYb49c6+DNWB7QXP+Yoaoqb3z/Hot6LfhvsbtlS3OjodV+JYrr/yKmf4ZwwYcYsg1EPqqfzuGXZSRAwHOx36moQQM=,iv:u4Gr0xjgIVGQlDRlyfKWKtTpAsqtaMR2wdcxV8M/VKo=,tag:uraHB3jo+fuRPRzFJ9CWSQ==,type:str]
-    pgp:
-    -   created_at: '2020-12-28T19:09:42Z'
-        enc: |
-            -----BEGIN PGP MESSAGE-----
-
-            hQGMA/nv6Q12Xr1TAQv+PKObWJMsRh+SmhfydwXgnltANaO1GoyG+bC2cU1NXIC8
-            IDjIy1+E/JQlsn3gZkxAlahQPO04unCq8WHfd14iI+h7W4QUKWbd+FysWwO+Y87A
-            cki46XkjQBuuQd58N+D/AFrV3U7D5ZjItmvww4aByJ1ehPI4XnglYpxIQ0up+r0g
-            viUTvQ1YS9yCIdeGlNrQJ9WI11l9RDde34nu3bToeIgjcPpQAMRcGEnc83bv0JIX
-            Fw5dNZTMriMENPj0eZV9FChMRgHkYwSqFuW7doCehnPxkAtg9bJz1ipqou5tpCQh
-            bBhR99NqRrkPKrt9GBvZoXn2eZOBdvsuRuWTaOPxZ4hB72pgT3+wpba68v1CenuH
-            9ySN9s/ZD6w8fYr1CNDzbNFewZmGM48PEacLFvD+nKjPdAA9EmfkDVeGDgtnVMHs
-            vKVCDkkNnv2OnoevIAQajLn5KhfYoehniSsAdUklLiqYFHzZKx2Ua0BEq1B2l7JH
-            iTFV7L0y6zxOvC6L6VuX0l4B9AnhJqGqE3PospdGFzC2aKLDj4UAIlXiUeilQdVJ
-            Cbcqekb8pwGfUUgPDvrT09HMI/cirDuRRYSiX1T5zEI1/eZPkBCA5XOIsFXS4V7I
-            G2cFpacj9s2FV0XD5Ti0
-            =TsR+
-            -----END PGP MESSAGE-----
-        fp: 80F070D138EBF2FF4F31AB9C4413F3681DD2FBB0
-    encrypted_regex: ^(data|stringData)$
-    version: 3.6.1
+  name: external-dns
+  namespace: external-dns
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns
+  template:
+    metadata:
+      labels:
+        app: external-dns
+    spec:
+      serviceAccountName: external-dns
+      containers:
+      - name: external-dns
+        image: k8s.gcr.io/external-dns/external-dns:v0.7.3
+        args:
+        - --source=ingress
+        - --domain-filter=axe.al
+        - --zone-id-filter=$CF_ZONE_ID
+        - --provider=cloudflare
+        - --cloudflare-proxied
+        env:
+        - name: CF_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: cloudflare-api
+              key: token
+        - name: CF_ZONE_ID
+          valueFrom:
+            secretKeyRef:
+              name: cloudflare-api
+              key: zone-id

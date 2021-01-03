@@ -1,0 +1,37 @@
+apiVersion: v1
+data:
+    token: ENC[AES256_GCM,data:zIFAX17VA7Am5byZ8Ptnn67+9RRojuF0G5i3IioDYEs1WrZwqAljMBNZqvlw1kA6+eEeQiqBBP8=,iv:gVERMrRfoPa4LWnNQRUzrNmMT0sLGe+nOwPzGiP+trM=,tag:bt5yQU+fcXiJUmaAJwDfPA==,type:str]
+    zone-id: ENC[AES256_GCM,data:8iBl31JY/wYiakR/531ymSrv4BZsHgzwe0JF9ZzfJsDF9qvSemrgSUTV23g=,iv:ljJ9iZOd4nw87KQ7vIbGk1JqjZqrQ4J8VjgIgLmFwIs=,tag:JYs1GSQHLkUI1QvWSdCrdg==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: cloudflare
+    namespace: external-dns
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    lastmodified: '2021-01-03T08:53:04Z'
+    mac: ENC[AES256_GCM,data:PYCxMYeoOjdPRTYRpLlcbxCwvkYIRfe4t/IuP+Vi0uM9YZCDK58HuUaXldcV3Mt9owmkj7XScrBPZj0gmLjLQh3kRLXKa+QnjqJKF7kwifdlQ3qLGKasKHZcmgg3NeBR8Xl7ItSZgMcdjsUtzcjkXOBwN28i/uWmcX9u0EP0fis=,iv:snsY2O7au2xq57FTPwA5AdhpRyKYqIFtsj6WHD1pdL8=,tag:aLphz8omCspUuvpg2fZX9A==,type:str]
+    pgp:
+    -   created_at: '2021-01-03T08:53:04Z'
+        enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQGMA/nv6Q12Xr1TAQv+IFSh+ziMA8frGxI2VM0HbKD1zYAi69MbjvWh3LZEdBGI
+            /bj0/w6U8X2ZGuXIHnbKlc1oVBHkcrkyeHfV9nrUObn6wEdrkyGsxYTFKcfS0UfJ
+            EU6mJbdMzwHca/nwWRvhxA0dWmIG+HQl0L5txb+1XZNFje+tX5aoSnzCy3D2mVxb
+            wX3PiESfu3Zjr5XjiicRpBR7VEHZWiajO+oxWGSBjT6pClmNVMDgcIucZiaJ9zOu
+            CXOkypmzroJ0+gjTpqoqdOY6100CMiqHoRuL+mgz7/v5X4jBNywi1IgE6uJEB1aU
+            zRVD+TrisQ3Ykq8vHF95F2A7dfiBhF4jsSkIK1NDN2TnYZYjwCrK5ygl9zIjTZo2
+            SsUKCkGSblnY9gnzhTymct8IB02wz12pxhy05w9vLg/QHGRm1AfUQ2UXE7mNnYe0
+            xq0RsaEBNJyaP6z2prgERtBv303UFQ98M8lCdCZuEKWbtaICfx/l5emvDCOUZsuH
+            YtVhRk2w0noiewFAUTTM0l4B1E52pKFZP4f0L9tOOqKrAmNMo4kPsy1pcgDc43lw
+            Olwy7uRdChHVBZVLuffeghcIe+2tniovAtWegV+HEjHWF81VWCtt8ZuVuaxyGVKt
+            SMbtxz0Ndcv/CHmiNyd5
+            =CzKC
+            -----END PGP MESSAGE-----
+        fp: 80F070D138EBF2FF4F31AB9C4413F3681DD2FBB0
+    encrypted_regex: ^(data|stringData)$
+    version: 3.6.1
