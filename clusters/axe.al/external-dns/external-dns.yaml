@@ -28,10 +28,10 @@ spec:
         - name: CF_API_TOKEN
           valueFrom:
             secretKeyRef:
-              name: cloudflare-api
+              name: cloudflare
               key: token
         - name: CF_ZONE_ID
           valueFrom:
             secretKeyRef:
-              name: cloudflare-api
+              name: cloudflare
               key: zone-id
