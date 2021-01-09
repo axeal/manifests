@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-udp-lb
+  namespace: pihole
+spec:
+  loadBalancerIP: 10.50.29.240
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pihole-tcp-lb
+  namespace: pihole
+spec:
+  loadBalancerIP: 10.50.29.240

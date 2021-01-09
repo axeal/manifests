@@ -1,0 +1,5 @@
+namespace: ingress-nginx
+resources:
+  - helm-repository.yaml
+  - helm-release.yaml
+  - ingress-nginx-dashboards.yaml

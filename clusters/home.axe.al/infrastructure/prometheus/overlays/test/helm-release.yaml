@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: prometheus
+spec:
+  values:
+    kube-state-metrics:
+      $patch: delete
+    alertmanager:
+      enabled: false
+    grafana:
+      ingress:
+        $path: replace
+        hosts:
+        - grafana.test.home.axe.al
+        tls:
+        - secretName: grafana-ingress-crt
+          hosts:
+          - grafana.test.home.axe.al
+    prometheus:
+      ingress:
+        $path: replace
+        hosts:
+        - prometheus.test.home.axe.al
+        tls:
+        - secretName: prometheus-ingress-crt
+          hosts:
+          - prometheus.test.home.axe.al

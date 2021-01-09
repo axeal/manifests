@@ -1,0 +1,3 @@
+resources:
+  - ../../bases/kube-prometheus-stack
+  - ../../bases/loki

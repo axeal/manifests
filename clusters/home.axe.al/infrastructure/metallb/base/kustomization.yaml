@@ -1,0 +1,5 @@
+namespace: metallb-system
+resources:
+ - configmap.yaml
+ - memberlist.yaml
+ - metallb.yaml

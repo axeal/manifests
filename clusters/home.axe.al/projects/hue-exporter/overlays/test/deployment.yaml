@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hue-exporter
+  namespace: hue-exporter
+spec:
+  template:
+    spec:
+      containers:
+      - image: mitchellrj/hue_exporter:0.2.2
+        name: hue-exporter

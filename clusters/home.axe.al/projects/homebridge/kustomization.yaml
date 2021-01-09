@@ -1,0 +1,4 @@
+namespace: homebridge
+resources:
+  - homebridge-config.yaml
+  - deployment.yaml

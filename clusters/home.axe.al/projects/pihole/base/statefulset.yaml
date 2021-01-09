@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pihole
+  namespace: pihole
+  labels:
+    app: pihole
+spec:
+  selector:
+    matchLabels:
+      app: pihole
+  serviceName: "pihole"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pihole
+    spec:
+      containers:
+      - name: pihole
+        image: pihole/pihole:v5.3.4
+        env:
+        - name: TZ
+          value: "Europe/Berlin"
+        - name: WEBPASSWORD
+          value: "admin"
+        - name: DNS1
+          value: 127.0.0.1#5053
+        - name: DNS2
+          value: "no"
+        - name: DNS_BOGUS_PRIV
+          value: "false"
+        - name: DNS_FQDN_REQUIRED
+          value: "true"
+        - name: REV_SERVER
+          value: "true"
+        - name: REV_SERVER_TARGET
+          value: 192.168.200.1
+        - name: REV_SERVER_CIDR
+          value: 192.168.200.0/24
+        ports:
+        - containerPort: 80
+          name: web
+        - containerPort: 53
+          name: dns
+        volumeMounts:
+        - name: etc-pihole
+          mountPath: "/etc/pihole"
+        - name: etc-dnsmasq-d
+          mountPath: "/etc/dnsmasq.d"
+      - name: pihole-exporter
+        image: ekofr/pihole-exporter:0.0.9
+        env:
+        - name: PIHOLE_HOSTNAME
+          value: "127.0.0.1"
+        - name: PIHOLE_PASSWORD
+          value: admin
+        - name: PORT
+          value: "9617"
+        ports:
+        - containerPort: 9617
+          name: metrics
+      - name: cloudflared
+        image: axeal/cloudflared:2020.11.11
+        env:
+        - name: TUNNEL_DNS_PORT
+          value: "5053"
+        args:
+        - "proxy-dns"
+  volumeClaimTemplates:
+  - metadata:
+      name: etc-pihole
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: longhorn
+      resources:
+        requests:
+          storage: 5Gi
+  - metadata:
+      name: etc-dnsmasq-d
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: longhorn
+      resources:
+        requests:
+          storage: 1Gi
