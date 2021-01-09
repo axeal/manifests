@@ -1,5 +1,5 @@
-namespace: metallb-system
 resources:
+ - namespace.yaml
  - configmap.yaml
  - memberlist.yaml
  - metallb.yaml

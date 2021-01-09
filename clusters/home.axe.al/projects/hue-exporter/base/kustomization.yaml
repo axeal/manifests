@@ -1,5 +1,5 @@
-namespace: hue-exporter
 resources:
+  - namespace.yaml
   - secret.yaml
   - deployment.yaml
   - service.yaml

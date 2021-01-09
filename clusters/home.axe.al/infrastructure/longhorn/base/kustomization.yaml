@@ -1,4 +1,4 @@
-namespace: longhorn-system
 resources:
+  - namespace.yaml
   - git-repository.yaml
   - helm-release.yaml
