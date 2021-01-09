@@ -1,0 +1,8 @@
+resources:
+  - namespace.yaml
+  - helm-repository.yaml
+  - helm-release.yaml
+  - cluster-issuer.yaml
+  - cluster-issuer-deploy-job.yaml
+  - cloudflare-api-key.yaml
+  - cert-manager-dashboard.yaml

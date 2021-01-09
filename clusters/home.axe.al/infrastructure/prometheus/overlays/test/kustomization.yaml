@@ -1,0 +1,5 @@
+resources:
+  - ../../bases/kube-prometheus-stack
+  - ../../bases/loki
+patchesStrategicMerge:
+  - helm-release.yaml

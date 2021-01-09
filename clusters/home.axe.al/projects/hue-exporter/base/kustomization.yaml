@@ -1,0 +1,7 @@
+resources:
+  - namespace.yaml
+  - secret.yaml
+  - deployment.yaml
+  - service.yaml
+  - servicemonitor.yaml
+  - grafana-dashboard.yaml

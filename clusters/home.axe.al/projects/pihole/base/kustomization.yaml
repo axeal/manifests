@@ -1,0 +1,7 @@
+resources:
+  - namespace.yaml
+  - statefulset.yaml
+  - service.yaml
+  - ingress.yaml
+  - podmonitor.yaml
+  - grafana-dashboard.yaml
