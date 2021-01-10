@@ -1,4 +1,0 @@
-resources:
- - helm-repository.yaml
- - loki-release.yaml
- - promtail-release.yaml

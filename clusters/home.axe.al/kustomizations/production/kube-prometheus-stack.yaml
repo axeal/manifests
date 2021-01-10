@@ -1,11 +1,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
 metadata:
-  name: prometheus
+  name: kube-prometheus-stack
   namespace: flux-system
 spec:
   interval: 15m
-  path: "./clusters/home.axe.al/infrastructure/prometheus/overlays/production"
+  path: "./clusters/home.axe.al/infrastructure/kube-prometheus-stack/overlays/production"
   prune: true
   sourceRef:
     kind: GitRepository
@@ -14,14 +14,6 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v1beta1
       kind: HelmRelease
       name: kube-prometheus-stack
-      namespace: prometheus
-    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
-      kind: HelmRelease
-      name: loki
-      namespace: prometheus
-    - apiVersion: helm.toolkit.fluxcd.io/v1beta1
-      kind: HelmRelease
-      name: promtail
       namespace: prometheus
   timeout: 5m
   dependsOn:
