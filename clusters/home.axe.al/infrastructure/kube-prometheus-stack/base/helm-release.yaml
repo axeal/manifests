@@ -19,8 +19,9 @@ spec:
   values:
     kube-state-metrics:
       image:
-        repository: k8s.gcr.io/kube-state-metrics-arm64
-        tag: v1.9.5
+        repository: k8s.gcr.io/kube-state-metrics
+        tag: v2.0.0-beta
+      collectors: null
     alertmanager:
       enabled: false
     grafana:
