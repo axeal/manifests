@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: '12.8.0'
+      version: '12.11.3'
       sourceRef:
         kind: HelmRepository
         name: prometheus
@@ -20,7 +20,7 @@ spec:
     kube-state-metrics:
       image:
         repository: k8s.gcr.io/kube-state-metrics-arm64
-        tag: v1.9.5
+        tag: v1.9.7
     alertmanager:
       enabled: false
     grafana:
