@@ -4,7 +4,7 @@ metadata:
   name: cert-manager
   namespace: flux-system
 spec:
-  interval: 15m
+  interval: 24h
   path: "./clusters/home.axe.al/infrastructure/cert-manager/overlays/production"
   prune: true
   sourceRef:

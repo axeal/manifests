@@ -4,7 +4,7 @@ metadata:
   name: promtail
   namespace: prometheus
 spec:
-  interval: 5m
+  interval: 24h
   chart:
     spec:
       chart: promtail
@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: grafana
         namespace: prometheus
-      interval: 30m
+      interval: 24h
   values:
     extraScrapConfigs:
     - job_name: journal

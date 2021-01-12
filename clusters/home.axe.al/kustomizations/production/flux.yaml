@@ -4,7 +4,7 @@ metadata:
   name: flux
   namespace: flux-system
 spec:
-  interval: 15m
+  interval: 24h
   path: "./clusters/home.axe.al/infrastructure/flux/"
   prune: true
   sourceRef:

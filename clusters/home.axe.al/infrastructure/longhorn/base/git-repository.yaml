@@ -4,7 +4,7 @@ metadata:
   name: longhorn
   namespace: longhorn-system
 spec:
-  interval: 60m
+  interval: 24h
   url: https://github.com/longhorn/longhorn
   ref:
     branch: master

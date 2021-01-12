@@ -4,5 +4,5 @@ metadata:
   name: grafana
   namespace: prometheus
 spec:
-  interval: 60m
+  interval: 24h
   url: https://grafana.github.io/helm-charts
