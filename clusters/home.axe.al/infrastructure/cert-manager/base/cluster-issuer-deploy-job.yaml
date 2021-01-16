@@ -47,7 +47,7 @@ spec:
       containers:
       - name: cluster-issuer-deploy-job
         image: rancher/kubectl:v1.18.6
-        command:
+        args:
         - apply
         - -f
         - /etc/config/cluster-issuer.yaml
