@@ -18,4 +18,4 @@ spec:
           service:
             name: hubble-ui
             port:
-              number: 12000
+              number: 80
