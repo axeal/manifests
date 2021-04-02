@@ -1,0 +1,21 @@
+---
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hubble
+  namespace: kube-system
+  annotations:
+    nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
+    nginx.ingress.kubernetes.io/auth-url: https://auth.axe.al/oauth2/auth
+spec:
+  rules:
+  - host: hubble.axe.al
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hubble-ui
+            port:
+              number: 12000
