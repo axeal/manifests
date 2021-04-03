@@ -67,6 +67,10 @@ spec:
               - ReadWriteOnce
     kubeEtcd:
       enabled: false
+    kubeProxy:
+      service:
+        selector:
+          app: kube-proxy
     kubeScheduler:
       enabled: false
     kubeControllerManager:
