@@ -2,3 +2,4 @@ namespace: prometheus
 resources:
 - helm-repository.yaml
 - helm-release.yaml
+- etcd-dashboard.yaml
