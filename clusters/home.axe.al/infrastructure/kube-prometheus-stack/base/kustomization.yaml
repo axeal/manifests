@@ -2,3 +2,5 @@ resources:
  - namespace.yaml
  - helm-repository.yaml
  - helm-release.yaml
+ - controller-manager-dashboard.yaml
+ - scheduler-dashboard.yaml
