@@ -75,20 +75,5 @@ spec:
                   storage: 25Gi
               accessModes:
               - ReadWriteOnce
-    kubeEtcd:
-      service:
-        enabled: false
-      serviceMonitor:
-        enabled: false
     kubeProxy:
       enabled: false
-    kubeScheduler:
-      service:
-        enabled: false
-      serviceMonitor:
-        enabled: false
-    kubeControllerManager:
-      service:
-        enabled: false
-      serviceMonitor:
-        enabled: false
