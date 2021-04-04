@@ -76,10 +76,19 @@ spec:
               accessModes:
               - ReadWriteOnce
     kubeEtcd:
-      enabled: false
+      service:
+        enabled: false
+      serviceMonitor:
+        enabled: false
     kubeProxy:
       enabled: false
     kubeScheduler:
-      enabled: false
+      service:
+        enabled: false
+      serviceMonitor:
+        enabled: false
     kubeControllerManager:
-      enabled: false
+      service:
+        enabled: false
+      serviceMonitor:
+        enabled: false
