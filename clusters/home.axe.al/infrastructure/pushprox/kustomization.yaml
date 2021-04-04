@@ -1,4 +1,4 @@
-namespace: flux-system
+namespace: prometheus
 resources:
 - helm-repository.yaml
 - helm-release.yaml
