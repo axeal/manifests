@@ -75,5 +75,11 @@ spec:
                   storage: 25Gi
               accessModes:
               - ReadWriteOnce
+    kubeEtcd:
+      enabled: false
     kubeProxy:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeControllerManager:
       enabled: false
