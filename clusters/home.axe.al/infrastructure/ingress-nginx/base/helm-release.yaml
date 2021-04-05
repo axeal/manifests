@@ -30,3 +30,5 @@ spec:
         requests:
           cpu: 10m
           memory: 200Mi
+      config:
+        disable-ipv6-dns: "true"
