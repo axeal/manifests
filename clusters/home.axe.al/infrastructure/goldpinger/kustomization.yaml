@@ -1,0 +1,4 @@
+resources:
+- goldpinger.yaml
+- dashboard.yaml
+- podmonitor.yaml
