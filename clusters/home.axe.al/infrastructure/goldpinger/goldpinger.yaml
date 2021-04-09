@@ -51,7 +51,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
-          image: axeal/goldpinger:v3.0.0
+          image: axeal/goldpinger:v3.2.0
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
