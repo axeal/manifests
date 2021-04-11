@@ -16,6 +16,7 @@ spec:
       interval: 24h
   values:
     config:
+      lokiAddress: http://loki:3100/loki/api/v1/push
       snippets:
         extraScrapeConfigs: |
           # Add an additional scrape config for syslog
