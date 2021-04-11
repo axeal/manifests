@@ -8,27 +8,30 @@ spec:
   chart:
     spec:
       chart: promtail
-      version: '2.1.0'
+      version: '3.5.0'
       sourceRef:
         kind: HelmRepository
         name: grafana
         namespace: prometheus
       interval: 24h
   values:
-    extraScrapConfigs:
-    - job_name: journal
-      journal:
-        path: /var/log/journal
-        max_age: 12h
-        labels:
-          job: systemd-journal
-      relabel_configs:
-      - source_labels:
-        - __journal__systemd_unit
-        target_label: unit
-      - source_labels:
-        - __journal__hostname
-        target_label: hostname
+    config:
+      snippets:
+        extraScrapeConfigs: |
+          # Add an additional scrape config for syslog
+          - job_name: journal
+            journal:
+              path: /var/log/journal
+              max_age: 12h
+              labels:
+                job: systemd-journal
+            relabel_configs:
+              - source_labels:
+                  - '__journal__systemd_unit'
+                target_label: 'unit'
+              - source_labels:
+                  - '__journal__hostname'
+                target_label: 'hostname'
     extraVolumes:
     - name: journal
       hostPath:
