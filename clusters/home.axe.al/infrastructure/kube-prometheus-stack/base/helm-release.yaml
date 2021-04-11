@@ -78,7 +78,10 @@ spec:
     kubeEtcd:
       enabled: false
     kubeProxy:
-      enabled: false
+      service:
+        enabled: false
+      serviceMonitor:
+        enabled: false
     kubeScheduler:
       enabled: false
     kubeControllerManager:
