@@ -34,6 +34,31 @@ spec:
           value: "Registry Realm"
         - name: REGISTRY_AUTH_HTPASSWD_PATH
           value: "/auth/htpasswd"
+        - name: REGISTRY_STORAGE_S3_ACCESSKEY
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: accesskey
+        - name: REGISTRY_STORAGE_S3_SECRETKEY
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: secretkey
+        - name: REGISTRY_STORAGE_S3_REGION
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: region
+        - name: REGISTRY_STORAGE_S3_REGIONENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: regionendpoint
+        - name: REGISTRY_STORAGE_S3_BUCKET
+          valueFrom:
+            secretKeyRef:
+              name: s3-credentials
+              key: bucket
         imagePullPolicy: Always
         name: registry
         ports:
@@ -46,8 +71,6 @@ spec:
         - name: htpasswd
           mountPath: "/auth"
           readOnly: true
-        - name: registry
-          mountPath: /var/lib/registry
       volumes:
       - name: cloudflare-origin-ca-tls
         secret:
@@ -55,9 +78,6 @@ spec:
       - name: htpasswd
         secret:
           secretName: htpasswd
-      - name: registry
-        persistentVolumeClaim:
-          claimName: registry
 
 ---
 apiVersion: v1
