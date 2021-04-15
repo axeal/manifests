@@ -1,6 +1,6 @@
 resources:
   - namespace.yaml
-  - statefulset.yaml
+  - deployment.yaml
   - service.yaml
   - ingress.yaml
   - podmonitor.yaml
