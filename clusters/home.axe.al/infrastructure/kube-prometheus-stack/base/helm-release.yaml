@@ -75,6 +75,7 @@ spec:
                   storage: 50Gi
               accessModes:
               - ReadWriteOnce
+              storageClassName: local-path
     kubeEtcd:
       enabled: false
     kubeProxy:
