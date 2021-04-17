@@ -1,10 +1,14 @@
 resources:
+  - thanos-overview-dashboard.yaml
+  - thanos-query-dashboard.yaml
   - thanos-query-deployment.yaml
   - thanos-query-service.yaml
   - thanos-query-serviceAccount.yaml
   - thanos-query-serviceMonitor.yaml
+  - thanos-sidecar-dashboard.yaml
   - thanos-sidecar-service.yaml
   - thanos-sidecar-serviceMonitor.yaml
+  - thanos-store-dashboard.yaml
   - thanos-store-service.yaml
   - thanos-store-serviceAccount.yaml
   - thanos-store-serviceMonitor.yaml
