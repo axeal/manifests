@@ -16,4 +16,4 @@ spec:
       name: pihole
       namespace: pihole
   dependsOn:
-    - name: longhorn
+    - name: metallb
