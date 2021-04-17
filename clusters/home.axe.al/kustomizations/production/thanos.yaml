@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 24h
-  path: "./clusters/home.axe.al/intrastructure/thanos/"
+  path: "./clusters/home.axe.al/infrastructure/thanos/"
   prune: true
   sourceRef:
     kind: GitRepository
