@@ -4,4 +4,3 @@ resources:
  - helm-release.yaml
  - controller-manager-dashboard.yaml
  - scheduler-dashboard.yaml
- - thanos-object-storage.yaml

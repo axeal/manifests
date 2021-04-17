@@ -1,4 +1,5 @@
 resources:
   - ../../base
+  - thanos-object-storage.yaml
 patchesStrategicMerge:
   - helm-release.yaml

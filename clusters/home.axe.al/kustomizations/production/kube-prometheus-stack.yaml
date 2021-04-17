@@ -16,5 +16,9 @@ spec:
       name: kube-prometheus-stack
       namespace: monitoring
   timeout: 5m
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   dependsOn:
     - name: ingress-nginx
