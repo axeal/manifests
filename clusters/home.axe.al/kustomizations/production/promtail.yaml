@@ -14,7 +14,7 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v1beta1
       kind: HelmRelease
       name: promtail
-      namespace: prometheus
+      namespace: logging
   timeout: 5m
   dependsOn:
     - name: loki

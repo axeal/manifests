@@ -14,7 +14,7 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v1beta1
       kind: HelmRelease
       name: k3s-etcd-pushprox
-      namespace: prometheus
+      namespace: monitoring
   timeout: 5m
   dependsOn:
     - name: kube-prometheus-stack

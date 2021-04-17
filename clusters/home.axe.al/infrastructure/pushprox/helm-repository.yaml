@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: rancher-charts
-  namespace: prometheus
+  namespace: monitoring
 spec:
   interval: 24h
   url: https://charts.rancher.io
