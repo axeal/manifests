@@ -1,0 +1,36 @@
+apiVersion: v1
+data:
+    thanos.yaml: ENC[AES256_GCM,data:fRYMHAU+26LVtOtI6xxr+giu+lEafp5yTsZZE74FYFWOcRQBcwTue3vnlx9Tr+gbLD3r/zoqbnTIlg44Lxguq/Vgb9p8ZGAhkbEf81A0JFVHBdMGbJJxq7wmK0M5U39K7HtGsayGH6902sXWp6SvrXD6/34aEARMtv1fR34woipTMdsDQiL4z7R0A5N6V444JdJoTVrVudIibEq1uza0lf+soV8VE5RaZxIDpVp4+XMOUeBinglmgQsv7dv2xSBdjhbXV/5XSZstt3Amv2BLSh5JvBqkZiIIVk/I92BVzfiv1zvEkr4YYw==,iv:1hnzzmFODXcwOgSTDJ+zAUd5gQ2Q562qq+tsYNFWf8E=,tag:YfX1ho9h14P/1ChagBc18w==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: thanos-object-storage
+    namespace: monitoring
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    lastmodified: '2021-04-17T09:53:51Z'
+    mac: ENC[AES256_GCM,data:04xVL7bNIby4xFs0pUFJI8GbdKcIhOws124EFjbmAfYEmx1mQqDHy5UeP9MmX9a0wG+3lEf//6X6/46kM/wsGjYy423SiHc2f+ClRcNQeB/Nw2G40WR802nDzg1dqmX6rt/cEDRcU203Jv7JW4jOwFAl51IGAaaD2Ax7pod3pyc=,iv:DNzXx8vvt8Vy9i0DbSvhzwk0DKuwmE/DtcWtDEvLrOI=,tag:c5XxGGZziqQNMPIautuM2A==,type:str]
+    pgp:
+    -   created_at: '2021-04-17T09:53:50Z'
+        enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQGMA0iwucVVYXgtAQv/R7W1+TmJkYKAur2+9WWK5N/iOkD4TAxYXJBLw33L1V7X
+            WYnFJQSnL2eA4kl31GypsunuJiioyEj8UrFaiCWFp5athn9tFJZQYqR8e8zuqbZf
+            fcYXJHDdbQ8NuQfmU4zI18V3dPkiRyf8YG2PpVrrcG5sBCvQnce74lhi2Ex1PeoL
+            iEDD3w5ihXCd/c/RClf23IAb9Vm6JEXv4Vlyy2iSnIYsf7HHpds5bG3NPvV5Qr2I
+            8NqKBBuHoGkEVZL30pem5i4mHRCm/kMJRiKLS1Ql+4z07hsD8cgd6H9iZ/I0ly+r
+            dnT6aCv/Flb8pmkuH76T058JTDqxp+0Z5c2DCADOAkrWcWb2xO4q+zqUkiAROUKX
+            mu5/6gRM6k196j8eWXABP5hMKCtG+/G8/fEGnNwuqHSMDqTVF8FKgsfNAzN6JCls
+            3d2LsyqsYyCPx/4BRYuKmcQ2Iv+/OiQJggK/dg2kaJ0RedqBsKan0uaFXFUPTyFs
+            lCU2R4EGj5YVyS+fAoj10lwBNI6v5mgCaDOKjcR9e8H98YwbQDwy9ufNjAiVJHKj
+            Iz9gDrJW5zimd6g3HSzf3DZudrz7WmS3yCggGiH8t79wjeqERMbaAhqb7j33THj3
+            66Mw+S3H58h9oTLa7Q==
+            =ObV5
+            -----END PGP MESSAGE-----
+        fp: AE254F5978665BA581E0B74E2A31290A234B45D8
+    encrypted_regex: ^(data|stringData)$
+    version: 3.6.1

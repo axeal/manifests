@@ -1,0 +1,11 @@
+resources:
+  - thanos-query-deployment.yaml
+  - thanos-query-service.yaml
+  - thanos-query-serviceAccount.yaml
+  - thanos-query-serviceMonitor.yaml
+  - thanos-sidecar-service.yaml
+  - thanos-sidecar-serviceMonitor.yaml
+  - thanos-store-service.yaml
+  - thanos-store-serviceAccount.yaml
+  - thanos-store-serviceMonitor.yaml
+  - thanos-store-statefulSet.yaml

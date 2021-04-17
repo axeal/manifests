@@ -65,6 +65,8 @@ spec:
           hosts:
           - prometheus.home.axe.al
       prometheusSpec:
+        externalLabels:
+          cluster: home.axe.al
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         storageSpec:
