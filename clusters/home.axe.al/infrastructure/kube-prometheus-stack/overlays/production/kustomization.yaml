@@ -3,3 +3,19 @@ resources:
   - thanos-object-storage.yaml
 patchesStrategicMerge:
   - helm-release.yaml
+patchesJson6902:
+- target:
+    group: helm.toolkit.fluxcd.io
+    version: v2beta1
+    kind: HelmRelease
+    name: kube-prometheus-stack
+  patch: |-
+    - op: add
+      path: "/spec/values/grafana/additionalDataSources/-"
+      value:
+        name: Thanos
+        type: prometheus
+        access: proxy
+        url: http://thanos-query.monitoring.svc.cluster.local:9090
+        editable: false
+        basicAuth: false
