@@ -8,8 +8,8 @@ spec:
     prometheus:
       prometheusSpec:
         thanos:
-          baseImage: raspbernetes/thanos
-          version: v0.17.2
+          baseImage: axeal/thanos
+          version: v0.19.0
           objectStorageConfig:
             key: thanos.yaml
             name: thanos-object-storage

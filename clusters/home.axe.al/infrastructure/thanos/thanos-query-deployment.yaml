@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: query-layer
     app.kubernetes.io/instance: thanos-query
     app.kubernetes.io/name: thanos-query
-    app.kubernetes.io/version: v0.17.2
+    app.kubernetes.io/version: v0.19.0
   name: thanos-query
   namespace: monitoring
 spec:
@@ -21,7 +21,7 @@ spec:
         app.kubernetes.io/component: query-layer
         app.kubernetes.io/instance: thanos-query
         app.kubernetes.io/name: thanos-query
-        app.kubernetes.io/version: v0.17.2
+        app.kubernetes.io/version: v0.19.0
     spec:
       affinity:
         podAntiAffinity:
@@ -49,12 +49,13 @@ spec:
         - --store=dnssrv+_grpc._tcp.thanos-store.monitoring.svc.cluster.local
         - --query.timeout=5m
         - --query.lookback-delta=15m
+        - --query.auto-downsampling
         env:
         - name: HOST_IP_ADDRESS
           valueFrom:
             fieldRef:
               fieldPath: status.hostIP
-        image: raspbernetes/thanos:v0.17.2
+        image: axeal/thanos:v0.19.0
         livenessProbe:
           failureThreshold: 4
           httpGet:
