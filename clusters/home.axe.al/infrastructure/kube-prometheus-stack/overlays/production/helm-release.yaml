@@ -9,7 +9,7 @@ spec:
       prometheusSpec:
         thanos:
           baseImage: axeal/thanos
-          version: v0.19.0
+          version: v0.20.1
           objectStorageConfig:
             key: thanos.yaml
             name: thanos-object-storage
