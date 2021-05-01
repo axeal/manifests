@@ -1,0 +1,7 @@
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pihole
+  namespace: pihole
+  annotations:
+    external-dns.alpha.kubernetes.io/target: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.cfargotunnel.com

@@ -1,2 +1,4 @@
 resources:
- - ../../base
+  - ../../base
+patchesStrategicMerge:
+  - ingress.yaml
