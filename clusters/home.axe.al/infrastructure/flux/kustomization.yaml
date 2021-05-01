@@ -2,6 +2,7 @@ namespace: flux-system
 resources:
 - dashboards.yaml
 - podmonitors.yaml
+- service.yaml
 - ingress.yaml
 - receiver.yaml
 - webhook-token.yaml

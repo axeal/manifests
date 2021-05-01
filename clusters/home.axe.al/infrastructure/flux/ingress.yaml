@@ -19,6 +19,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: notification-controller
+            name: notification-controller-webhook
             port:
               number: 80
