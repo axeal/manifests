@@ -12,7 +12,7 @@ spec:
     name: manifests
   healthChecks:
     - apiVersion: apps/v1
-      kind: StatefulSet
+      kind: Deployment
       name: pihole
       namespace: pihole
   dependsOn:
