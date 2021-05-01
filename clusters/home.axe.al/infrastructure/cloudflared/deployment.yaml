@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argo-tunnel
+  labels:
+    app: argo-tunnel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argo-tunnel
+  template:
+    metadata:
+      labels:
+        app: argo-tunnel
+    spec:
+      containers:
+        - name: cloudflared
+          image: axeal/cloudflared:2021.4.0
+          command: ["cloudflared", "tunnel", "run"]
+          args: ["-f", "--credentials-file", "/etc/cloudflared/credentials.json", "4e66423e-bc9e-46b5-90fa-fe0744fb224c"]
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: tunnel-credentials
+              mountPath: "/etc/cloudflared"
+              readOnly: true
+          env:
+            - name: TUNNEL_URL
+              value: "http://ingress-nginx-controller.ingress-nginx.svc.cluster.local:80"
+            - name: NO_AUTOUPDATE
+              value: "true"
+      volumes:
+        - name: tunnel-credentials
+          secret:
+            secretName: tunnel-credentials
+            items:
+            - key: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.json
+              path: credentials.json
