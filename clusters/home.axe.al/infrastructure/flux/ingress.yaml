@@ -1,0 +1,24 @@
+apiVersion:  networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: receiver
+  namespace: flux-system
+  annotations:
+    cert-manager.io/cluster-issuer: cluster-issuer
+    external-dns.alpha.kubernetes.io/target: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.cfargotunnel.com
+spec:
+  tls:
+  - hosts:
+    - flux.home.axe.al
+    secretName: flux-tls
+  rules:
+  - host: flux.home.axe.al
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: notification-controller
+            port:
+              number: 80
