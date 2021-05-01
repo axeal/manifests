@@ -24,7 +24,7 @@ spec:
         - --zone-id-filter=$(CF_ZONE_ID)
         - --provider=cloudflare
         - --cloudflare-proxied
-        - --txt-prefix=home.axe.al
+        - --txt-prefix=external-dns.
         - --txt-owner-id=home.axe.al
         env:
         - name: CF_API_TOKEN
