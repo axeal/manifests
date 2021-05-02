@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - flux.home.axe.al
+    - flux.axe.al
     secretName: flux-tls
   rules:
-  - host: flux.home.axe.al
+  - host: flux.axe.al
     http:
       paths:
       - path: /
