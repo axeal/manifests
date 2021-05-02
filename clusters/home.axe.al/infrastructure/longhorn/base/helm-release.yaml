@@ -17,7 +17,7 @@ spec:
   values:
     ingress:
       enabled: true
-      host: longhorn.home.axe.al
+      host: longhorn.axe.al
       tls: true
       tlsSecret: longhorn-ingress-cert
       annotations:

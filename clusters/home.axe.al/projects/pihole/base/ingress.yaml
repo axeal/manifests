@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - pihole.home.axe.al
+    - pihole.axe.al
     secretName: pihole-tls
   rules:
-  - host: pihole.home.axe.al
+  - host: pihole.axe.al
     http:
       paths:
       - path: /

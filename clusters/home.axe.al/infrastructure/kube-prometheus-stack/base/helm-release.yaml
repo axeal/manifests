@@ -43,11 +43,11 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: https://auth.axe.al/oauth2/auth
           nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
         hosts:
-        - grafana.home.axe.al
+        - grafana.axe.al
         tls:
         - secretName: grafana-ingress-crt
           hosts:
-          - grafana.home.axe.al
+          - grafana.axe.al
       sidecar:
         dashboards:
           searchNamespace: ALL
@@ -59,11 +59,11 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: https://auth.axe.al/oauth2/auth
           nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
         hosts:
-        - prometheus.home.axe.al
+        - prometheus.axe.al
         tls:
         - secretName: prometheus-ingress-crt
           hosts:
-          - prometheus.home.axe.al
+          - prometheus.axe.al
       prometheusSpec:
         externalLabels:
           cluster: home.axe.al
