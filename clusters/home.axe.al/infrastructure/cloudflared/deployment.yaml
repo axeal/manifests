@@ -6,7 +6,7 @@ metadata:
   labels:
     app: argo-tunnel
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: argo-tunnel
@@ -15,6 +15,16 @@ spec:
       labels:
         app: argo-tunnel
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - argo-tunnel
+            topologyKey: "kubernetes.io/hostname"
       containers:
         - name: cloudflared
           image: axeal/cloudflared:2021.4.0
