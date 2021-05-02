@@ -1,0 +1,59 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: oauth2-proxy
+  namespace: oauth2-proxy
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: oauth2-proxy
+      version: '3.2.0'
+      sourceRef:
+        kind: HelmRepository
+        name: helm
+        namespace: oauth2-proxy
+      interval: 1m
+  values:
+    image:
+      repository: quay.io/oauth2-proxy/oauth2-proxy
+      tag: "v5.1.0-arm64"
+    config:
+      existingSecret: oauth2-proxy
+    ingress:
+      enabled: true
+      hosts:
+      - auth.axe.al
+      annotations:
+        cert-manager.io/cluster-issuer: cluster-issuer
+        external-dns.alpha.kubernetes.io/target: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.cfargotunnel.com
+      tls:
+        - secretName: oauth2-proxy-tls
+          hosts:
+            - auth.axe.al
+    extraArgs:
+      provider: github
+      whitelist-domain: .axe.al
+      cookie-domain: .axe.al
+    replicaCount: 2
+    podLabels:
+      app.kubernetes.io/name: oauth2-proxy
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                - oauth2-proxy
+            topologyKey: kubernetes.io/hostname
+    resources:
+      requests:
+        cpu: 10m
+        memory: 50Mi
+      limits:
+        cpu: 100m
+        memory: 100Mi

@@ -13,10 +13,3 @@ spec:
       ingress:
         annotations:
           external-dns.alpha.kubernetes.io/target: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.cfargotunnel.com
-      prometheusSpec:
-        thanos:
-          baseImage: axeal/thanos
-          version: v0.20.1
-          objectStorageConfig:
-            key: thanos.yaml
-            name: thanos-object-storage
