@@ -34,3 +34,4 @@ spec:
           memory: 200Mi
       config:
         disable-ipv6-dns: "true"
+        use-forwarded-headers: "true"
