@@ -38,17 +38,13 @@ spec:
               readOnly: true
           env:
             - name: TUNNEL_URL
-              value: "https://ingress.local:443"
+              value: "https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443"
             - name: NO_AUTOUPDATE
               value: "true"
             - name: TUNNEL_METRICS
               value: "0.0.0.0:5000"
-            - name: NO_TLS_VERIFY
-              value: "true"
-      hostAliases:
-        - ip: 192.168.200.240
-          hostnames:
-            - ingress.local
+            - name: TUNNEL_ORIGIN_SERVER_NAME
+              value: "axe.al"
       volumes:
         - name: tunnel-credentials
           secret:

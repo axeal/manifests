@@ -22,6 +22,8 @@ spec:
         annotations:
           metallb.universe.tf/allow-shared-ip: "true"
       kind: DaemonSet
+      extraArgs:
+        default-ssl-certificate: ingress-nginx/cloudflare-origin-ca-tls
       metrics:
         enabled: true
         serviceMonitor:
