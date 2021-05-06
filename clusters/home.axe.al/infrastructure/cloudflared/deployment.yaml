@@ -32,6 +32,7 @@ spec:
           args: ["-f", "--credentials-file", "/etc/cloudflared/credentials.json", "4e66423e-bc9e-46b5-90fa-fe0744fb224c"]
           ports:
             - containerPort: 5000
+              name: metrics
           volumeMounts:
             - name: tunnel-credentials
               mountPath: "/etc/cloudflared"
@@ -43,6 +44,8 @@ spec:
               value: "true"
             - name: TUNNEL_METRICS
               value: "0.0.0.0:5000"
+            - name: TUNNEL_METRICS_UPDATE_FREQ
+              value: "30s"
             - name: TUNNEL_ORIGIN_SERVER_NAME
               value: "axe.al"
       volumes:
