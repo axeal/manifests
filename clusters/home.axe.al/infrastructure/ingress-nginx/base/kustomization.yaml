@@ -1,5 +1,6 @@
 resources:
   - namespace.yaml
+  - cloudflare-origin-ca-tls.yaml
   - helm-repository.yaml
   - helm-release.yaml
   - ingress-nginx-dashboards.yaml
