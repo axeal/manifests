@@ -17,10 +17,6 @@ spec:
   install:
     skipCRDs: true
   values:
-    kube-state-metrics:
-      image:
-        repository: k8s.gcr.io/kube-state-metrics-arm64
-        tag: v1.9.5
     prometheus-node-exporter:
       extraArgs:
           - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
