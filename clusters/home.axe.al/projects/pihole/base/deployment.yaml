@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pihole
-        image: pihole/pihole:v5.3.4
+        image: pihole/pihole:2021.10
         env:
         - name: TZ
           value: "Europe/Berlin"
@@ -31,14 +31,6 @@ spec:
           value: "false"
         - name: DNS_FQDN_REQUIRED
           value: "true"
-        - name: REV_SERVER
-          value: "true"
-        - name: REV_SERVER_DOMAIN
-          value: "home.axe.al"
-        - name: REV_SERVER_TARGET
-          value: 192.168.200.1
-        - name: REV_SERVER_CIDR
-          value: 192.168.200.0/24
         ports:
         - containerPort: 80
           name: web
