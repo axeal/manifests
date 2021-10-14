@@ -1,8 +1,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: HelmRepository
+kind: GitRepository
 metadata:
   name: rancher-charts
   namespace: monitoring
 spec:
   interval: 24h
-  url: https://charts.rancher.io
+  url: https://github.com/rancher/charts.git
+  ref:
+    branch: release-v2.5
