@@ -21,6 +21,7 @@ spec:
         externalTrafficPolicy: Cluster
         annotations:
           metallb.universe.tf/allow-shared-ip: "true"
+      watchIngressWithoutClass: "true"
       kind: DaemonSet
       extraArgs:
         default-ssl-certificate: ingress-nginx/cloudflare-origin-ca-tls
