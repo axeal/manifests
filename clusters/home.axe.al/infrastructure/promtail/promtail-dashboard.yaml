@@ -557,13 +557,15 @@ data:
             {
                "allValue": null,
                "current": {
-                  "text": "prod",
-                  "value": "prod"
+                  "isNone": true,
+                  "selected": false,
+                  "text": "None",
+                  "value": ""
                },
                "datasource": "$datasource",
-               "hide": 0,
+               "hide": 2,
                "includeAll": false,
-               "label": "cluster",
+               "label": "null",
                "multi": false,
                "name": "cluster",
                "options": [ ],
