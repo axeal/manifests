@@ -31,6 +31,50 @@ spec:
     k8s-app: kube-dns
 ---
 apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-addon: coredns.addons.k8s.io
+    k8s-app: node-local-dns
+    kubernetes.io/cluster-service: "true"
+    kubernetes.io/name: NodeLocalDNS
+  name: node-local-dns
+  namespace: kube-system
+spec:
+  clusterIP: None
+  ports:
+  - name: node-local-dns-metrics
+    port: 9253
+    protocol: TCP
+    targetPort: 9253
+  selector:
+    k8s-app: node-local-dns
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: nodelocaldns
+  name: nodelocaldns
+  namespace: kube-system
+spec:
+  endpoints:
+  - interval: 15s
+    path: /metrics
+    port: node-local-dns-metrics
+  jobLabel: k8s-app
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  selector:
+    matchLabels:
+      k8s-app: node-local-dns
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: node-local-dns
