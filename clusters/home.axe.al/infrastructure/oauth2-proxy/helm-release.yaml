@@ -33,8 +33,7 @@ spec:
       whitelist-domain: .axe.al
       cookie-domain: .axe.al
     replicaCount: 2
-    podLabels:
-      app.kubernetes.io/name: oauth2-proxy
+    nameOverride: oauth2-proxy
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
