@@ -34,6 +34,8 @@ spec:
       provider: github
       whitelist-domain: .axe.al
       cookie-domain: .axe.al
+    readinessProbe:
+      enabled: false
     replicaCount: 2
     nameOverride: oauth2-proxy
     affinity:
