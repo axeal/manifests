@@ -85,3 +85,6 @@ spec:
       enabled: false
     kubeControllerManager:
       enabled: false
+    kube-state-metrics:
+      metricLabelsAllowlist:
+        - nodes=[kubernetes.io/hostname]
