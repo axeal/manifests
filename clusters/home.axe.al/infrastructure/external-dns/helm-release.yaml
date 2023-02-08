@@ -1,0 +1,39 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: external-dns
+spec:
+  interval: 24h
+  chart:
+    spec:
+      chart: external-dns
+      version: '1.12.1'
+      sourceRef:
+        kind: HelmRepository
+        name: external-dns
+        namespace: external-dns
+      interval: 24h
+  values:
+    env:
+      - name: CF_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare
+            key: token
+      - name: CF_ZONE_ID
+        valueFrom:
+          secretKeyRef:
+            name: cloudflare
+            key: zone-id
+    sources:
+      - ingress
+    domainFilters:
+      - axe.al
+    extraArgs:
+      - "--zone-id-filter=$(CF_ZONE_ID)"
+    provider: cloudflare
+    txtPrefix: external-dns.
+    txtOwnerId: home.axe.al
+    serviceMonitor:
+      enabled: true
