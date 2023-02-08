@@ -1,5 +1,5 @@
 resources:
   - namespace.yaml
-  - git-repository.yaml
+  - helm-repository.yaml
   - helm-release.yaml
   - service-monitor.yaml
