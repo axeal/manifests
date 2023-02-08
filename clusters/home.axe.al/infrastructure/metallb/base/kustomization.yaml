@@ -2,6 +2,5 @@ resources:
   - github.com/metallb/metallb/config/prometheus-native?ref=v0.13.7
   - ipaddresspool.yaml
   - l2advertisement.yaml
-  - metallb.yaml
 patchesStrategicMerge:
   - prometheus-k8s.yaml
