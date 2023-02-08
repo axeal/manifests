@@ -8,9 +8,9 @@ spec:
   chart:
     spec:
       chart: ./chart/
-      version: '1.3.2'
+      version: '1.4.0'
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: longhorn
         namespace: longhorn-system
       interval: 24h
