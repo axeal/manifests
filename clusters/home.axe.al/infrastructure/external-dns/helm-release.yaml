@@ -32,6 +32,7 @@ spec:
       - axe.al
     extraArgs:
       - "--zone-id-filter=$(CF_ZONE_ID)"
+      - "--cloudflare-proxied"
     provider: cloudflare
     txtPrefix: external-dns.
     txtOwnerId: home.axe.al
