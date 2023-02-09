@@ -87,4 +87,4 @@ spec:
       enabled: false
     kube-state-metrics:
       metricLabelsAllowlist:
-        - nodes=[kubernetes.io/hostname]
+        - nodes=[node-role.kubernetes.io/control-plane]
