@@ -34,6 +34,7 @@ spec:
       provider: github
       whitelist-domain: .axe.al
       cookie-domain: .axe.al
+      scope: "user:email"
     readinessProbe:
       enabled: false
     replicaCount: 2
