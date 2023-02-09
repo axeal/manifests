@@ -8,9 +8,10 @@ spec:
   interval: 24h
   chart:
     spec:
-      chart: ./charts/rancher-pushprox/rancher-pushprox/0.1.400
+      chart: rancher-pushprox
+      version: '100.0.1'
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: rancher-charts
         namespace: monitoring
       interval: 24h
