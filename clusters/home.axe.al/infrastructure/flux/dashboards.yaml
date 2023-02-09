@@ -4,7 +4,7 @@ metadata:
   name: flux-dashboards
   namespace: flux-system
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
 data:
   cluster.json: |-
     {
