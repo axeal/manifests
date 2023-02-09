@@ -12,7 +12,7 @@ metadata:
   name: system:kube-vip-role
 rules:
   - apiGroups: [""]
-    resources: ["services", "services/status", "nodes"]
+    resources: ["services", "services/status", "nodes", "endpoints"]
     verbs: ["list","get","watch", "update"]
   - apiGroups: ["coordination.k8s.io"]
     resources: ["leases"]
@@ -61,11 +61,21 @@ spec:
           value: "true"
         - name: cp_namespace
           value: kube-system
+        - name: vip_ddns
+          value: "false"
         - name: svc_enable
           value: "false"
+        - name: vip_leaderelection
+          value: "true"
+        - name: vip_leaseduration
+          value: "5"
+        - name: vip_renewdeadline
+          value: "3"
+        - name: vip_retryperiod
+          value: "1"
         - name: vip_address
           value: "192.168.200.200"
-        image: ghcr.io/kube-vip/kube-vip:v0.3.8
+        image: ghcr.io/kube-vip/kube-vip:v0.5.9
         imagePullPolicy: Always
         name: kube-vip
         resources: {}
