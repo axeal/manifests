@@ -4,7 +4,7 @@ metadata:
   name: cilium-agent-dashboard
   namespace: kube-system
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
 data:
   cilium-metrics_rev1.json: |-
     {

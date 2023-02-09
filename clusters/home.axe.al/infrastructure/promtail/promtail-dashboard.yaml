@@ -4,7 +4,7 @@ metadata:
   name: promtail-dashboard
   namespace: logging
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
 data:
   promtail.json: |-
     {

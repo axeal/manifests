@@ -4,7 +4,7 @@ metadata:
   name: cilium-operator-dashboard
   namespace: kube-system
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
 data:
   cilium-operator_rev1.json: |-
     {

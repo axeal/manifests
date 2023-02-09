@@ -4,7 +4,7 @@ metadata:
   name: loki-operational-dashboard
   namespace: logging
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
 data:
   loki-operational.json: |-
     {

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
   name: cert-manager-dashboard
   namespace: cert-manager
 data:
@@ -1165,4 +1165,3 @@ data:
       "uid": "TvuRo2iMk",
       "version": 1
     }
-  

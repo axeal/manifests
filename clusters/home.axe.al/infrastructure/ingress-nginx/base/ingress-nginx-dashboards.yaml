@@ -4,7 +4,7 @@ metadata:
   name: ingress-nginx-dashboards
   namespace: ingress-nginx
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
 data:
   nginx.json: |-
     {
