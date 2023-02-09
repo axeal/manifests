@@ -35,6 +35,7 @@ spec:
       whitelist-domain: .axe.al
       cookie-domain: .axe.al
       scope: "user:email"
+      github-user: axeal
     readinessProbe:
       enabled: false
     replicaCount: 2
