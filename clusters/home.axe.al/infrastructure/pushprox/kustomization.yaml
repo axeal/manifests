@@ -1,4 +1,4 @@
 resources:
-- helm-repository.yaml
+- git-repository.yaml
 - helm-release.yaml
 - etcd-dashboard.yaml
