@@ -12,11 +12,20 @@ metadata:
   name: system:kube-vip-role
 rules:
   - apiGroups: [""]
-    resources: ["services", "services/status", "nodes", "endpoints"]
+    resources: ["services/status"]
+    verbs: ["update"]
+  - apiGroups: [""]
+    resources: ["services", "endpoints"]
     verbs: ["list","get","watch", "update"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["list","get","watch", "update", "patch"]
   - apiGroups: ["coordination.k8s.io"]
     resources: ["leases"]
     verbs: ["list", "get", "watch", "update", "create"]
+  - apiGroups: ["discovery.k8s.io"]
+    resources: ["endpointslices"]
+    verbs: ["list","get","watch", "update"]
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
@@ -29,7 +38,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: kube-vip
-  namespace: kube-system
+  namespace: kube-system\
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -75,7 +84,7 @@ spec:
           value: "1"
         - name: vip_address
           value: "192.168.200.200"
-        image: ghcr.io/kube-vip/kube-vip:v0.5.9
+        image: ghcr.io/kube-vip/kube-vip:v0.8.0
         imagePullPolicy: Always
         name: kube-vip
         resources: {}
