@@ -1,5 +1,5 @@
 #https://github.com/k3s-io/k3s/issues/2262
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: k3s-etcd-pushprox
