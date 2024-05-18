@@ -8,7 +8,7 @@ spec:
   interval: 24h
   chart:
     spec:
-      chart: ./charts/rancher-pushprox/rancher-pushprox/0.1.400
+      chart: ./charts/rancher-pushprox/103.0.1
       sourceRef:
         kind: GitRepository
         name: rancher-charts
