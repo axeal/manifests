@@ -8,18 +8,36 @@ spec:
   chart:
     spec:
       chart: loki
-      version: '2.8.4'
+      version: '6.5.2'
       sourceRef:
         kind: HelmRepository
         name: grafana
         namespace: logging
       interval: 24h
   values:
-    config:
-      chunk_store_config:
-        max_look_back_period: 672h
-      table_manager:
-        retention_deletes_enabled: true
-        retention_period: 672h
-    serviceMonitor:
-      enabled: true
+    deploymentMode: SingleBinary
+    loki:
+      commonConfig:
+        replication_factor: 1
+      storage:
+        type: 'filesystem'
+      schemaConfig:
+        configs:
+        - from: 2024-01-01
+          store: tsdb
+          index:
+            prefix: loki_index_
+            period: 672h
+          object_store: filesystem # we're storing on filesystem so there's no real persistence here.
+          schema: v13
+    singleBinary:
+      replicas: 1
+    read:
+      replicas: 0
+    backend:
+      replicas: 0
+    write:
+      replicas: 0
+    monitoring:
+      serviceMonitor:
+        enabled: true
