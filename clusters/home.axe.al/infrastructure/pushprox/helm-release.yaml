@@ -20,7 +20,7 @@ spec:
         clusterId: axe.al
         clusterName: axe.al
     component: k3s-etcd
-    metricsPort: 2379
+    metricsPort: 2382
     clients:
       useLocalhost: true
       https:
