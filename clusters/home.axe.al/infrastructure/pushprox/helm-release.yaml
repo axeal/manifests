@@ -15,6 +15,10 @@ spec:
         namespace: monitoring
       interval: 24h
   values:
+    global:
+      cattle:
+        clusterId: axe.al
+        clusterName: axe.al
     component: k3s-etcd
     metricsPort: 2379
     clients:
