@@ -29,7 +29,7 @@ spec:
         - name: cloudflared
           image: cloudflare/cloudflared:2024.5.0
           command: ["cloudflared", "tunnel", "run"]
-          args: ["-f", "--credentials-file", "/etc/cloudflared/credentials.json", "4e66423e-bc9e-46b5-90fa-fe0744fb224c"]
+          args: ["--credentials-file", "/etc/cloudflared/credentials.json", "4e66423e-bc9e-46b5-90fa-fe0744fb224c"]
           ports:
             - containerPort: 5000
               name: metrics
