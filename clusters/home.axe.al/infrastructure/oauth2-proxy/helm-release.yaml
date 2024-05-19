@@ -32,7 +32,7 @@ spec:
       provider: github
       whitelist-domain: .axe.al
       cookie-domain: .axe.al
-      scope: "user:email"
+      scope: "user:email read:org"
       github-user: axeal
     readinessProbe:
       enabled: false
