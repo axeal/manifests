@@ -41,7 +41,7 @@ spec:
     monitoring:
       serviceMonitor:
         enabled: true
-      lokiCanary:
-        enabled: false
     chunksCache:
+      enabled: false
+    lokiCanary:
       enabled: false
