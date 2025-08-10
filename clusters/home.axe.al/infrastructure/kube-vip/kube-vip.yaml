@@ -84,7 +84,7 @@ spec:
           value: "1"
         - name: vip_address
           value: "192.168.200.200"
-        image: ghcr.io/kube-vip/kube-vip:v0.8.0
+        image: ghcr.io/kube-vip/kube-vip:v1.0.0
         imagePullPolicy: Always
         name: kube-vip
         resources: {}
