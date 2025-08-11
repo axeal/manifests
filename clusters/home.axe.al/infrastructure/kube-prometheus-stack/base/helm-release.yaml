@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: '44.3.1'
+      version: '76.2.1'
       sourceRef:
         kind: HelmRepository
         name: prometheus
@@ -17,6 +17,9 @@ spec:
   install:
     skipCRDs: true
   values:
+    crds:
+      upgradeJob:
+        enabled: true
     prometheus-node-exporter:
       extraArgs:
           - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
