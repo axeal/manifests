@@ -178,6 +178,10 @@ spec:
             cpu: 25m
             memory: 5Mi
         args: [ "-localip", "169.254.20.10,10.43.0.10", "-conf", "/etc/Corefile", "-upstreamsvc", "kube-dns-upstream"]
+        securityContext:
+          capabilities:
+            add:
+            - NET_ADMIN
         ports:
         - containerPort: 53
           name: dns
