@@ -7,6 +7,7 @@ spec:
   interval: 24h
   chart:
     spec:
+      releaseName: snapshot-validation-webhook
       chart: rke2-snapshot-validation-webhook
       version: '1.9.001'
       sourceRef:
