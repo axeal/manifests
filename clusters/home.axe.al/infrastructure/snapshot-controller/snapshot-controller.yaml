@@ -5,9 +5,9 @@ metadata:
   namespace: kube-system
 spec:
   interval: 24h
+  releaseName: snapshot-controller
   chart:
     spec:
-      releaseName: snapshot-controller
       chart: rke2-snapshot-controller
       version: '4.0.003'
       sourceRef:
