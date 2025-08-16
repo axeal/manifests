@@ -12,5 +12,5 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: k3k
-        namespace: k3k-systsem
+        namespace: k3k-system
       interval: 24h
