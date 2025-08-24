@@ -1,36 +1,17 @@
-apiVersion: v1
-data:
-    token: ENC[AES256_GCM,data:W3Clm40WG9oE4lq+T93UaACReA+dFbXLF15I0lZrnZ3e70r4xfNTl+7Mu8HbYyOPd31A4rk2qiE=,iv:AisJ6MAjqQzY0q5EFaRUAN9CPLTENi6XaCnN10xhDkE=,tag:Vly5TGUXI0AR73ftio21ZA==,type:str]
-kind: Secret
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
 metadata:
-    creationTimestamp: null
+  name: webhook-token
+  namespace: flux-system
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: bitwarden-secretsmanager
+    kind: ClusterSecretStore
+  target:
     name: webhook-token
-    namespace: flux-system
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    lastmodified: '2021-05-01T17:02:08Z'
-    mac: ENC[AES256_GCM,data:L1uhbGQJDaFJet8Lg69SEwYQO2mAjmlPeocBUPcDmh7QsMAvhFyO4gEvrqZMeUHwTKxw+98QnSD3Hf/9EMUMlgQYDKb7c5bmRvEd5g1eWMMs0CdldVWG8RICBHuyZl7zPu2BgzoVDBup7LftWPFFvQqgLtlcB0f+8bBfhli2qdA=,iv:hIGrZemD2g5ED40CBK0HC9oJA28erhgl0Ohd+fyxs2Y=,tag:zbj0bgHiHqat1NovpfItCQ==,type:str]
-    pgp:
-    -   created_at: '2021-05-01T17:02:07Z'
-        enc: |
-            -----BEGIN PGP MESSAGE-----
-
-            hQGMA0iwucVVYXgtAQv+ISwPUw7lNd6GUBsFrDIZTaNndUMdUo5G4Qe5u7WbYTKQ
-            OIswRls8DZzXkl+KzoSCL3ufAZHZU+DpaHEJdqPEqvZhmPCcIQ5kskp9mfoAp4nr
-            uHFcUKS8naT56sMr2W03xUrXZ5yOrf6Rfz8DP6LyOogHfmAcfb2LXD408flKWIxp
-            fv8PlzJzYdUm66XtIzb57Qg+4mEYm3nz7c5HDAGqlefo32Bkh8j44pDeE5Rf95k3
-            Hak9oKlSaebfxVUz6O0yK6n//UMPiofxyf85CaX8UMBOYhHuNWXqMxvDXIV8o11T
-            55CjyTMK3AsUJSW6q4aSUjgYidEcIyfyUsAnD64TVz8a92lTuI87eJnPsTV4tvy0
-            peg3Xrn11FmRE2xjKFEncowl7nYD6pBez7vhTov9ISsbAUx+VvJ+fGW6Kdk5v2T1
-            KQOo+5Ub2DZhPjV5xVPJJHxok6SF6DrEVUwukNcCP/Eg2WTkS6axVTTh+rXrfoY3
-            h1UE9BgZ+MNPQ+qW6hK30l4BE2IG0f7z8ddanDc88plxVqDPs1Udcu2K65TmumhD
-            4MW1T4wCbYK+z+ulHMmzKxhojLav3bq/DPqQR5CNGF9wJnrT5/buefmSCJEdmHDV
-            wYnJZp1dYZSCuZ6aJAqk
-            =MN8m
-            -----END PGP MESSAGE-----
-        fp: AE254F5978665BA581E0B74E2A31290A234B45D8
-    encrypted_regex: ^(data|stringData)$
-    version: 3.6.1
+    creationPolicy: Owner
+  data:
+  - secretKey: token
+    remoteRef:
+      key: "flux-system/webhook-token"
