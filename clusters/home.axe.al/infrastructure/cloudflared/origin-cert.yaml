@@ -1,0 +1,17 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: origin-cert
+  namespace: cloudflared
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: bitwarden-secretsmanager
+    kind: ClusterSecretStore
+  target:
+    name: origin-cert
+    creationPolicy: Owner
+  data:
+  - secretKey: cert.pem
+    remoteRef:
+      key: "cloudflared/origin-cert"
