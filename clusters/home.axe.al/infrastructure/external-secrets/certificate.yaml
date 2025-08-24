@@ -14,3 +14,21 @@ spec:
     name: selfsigned-ca-issuer
     kind: ClusterIssuer
     group: cert-manager.io
+---
+apiVersion: trust-manager.io/v1aplha1
+kind: Bundle
+metadata:
+  name: selfsigned-ca
+spec:
+  sources:
+  - secret:
+      name: selfsigned-ca-secret
+      namespace: cert-manager
+      key: tls.crt
+  target:
+    configMap:
+      name: selfsigned-ca
+      key: ca.crt
+    namespaceSelector:
+      matchNames:
+        - external-secrets
