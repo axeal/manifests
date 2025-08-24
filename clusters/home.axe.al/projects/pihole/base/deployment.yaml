@@ -31,6 +31,8 @@ spec:
           value: "false"
         - name: FTLCONF_dns_domainNeeded
           value: "true"
+        - name: FTLCONF_dns_listeningMode
+          value: all
         ports:
         - containerPort: 80
           name: web
