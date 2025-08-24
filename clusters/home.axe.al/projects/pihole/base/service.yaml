@@ -27,7 +27,7 @@ metadata:
   name: pihole-udp-lb
   namespace: pihole
   annotations:
-   metallb.io/allow-shared-ip: "true"
+   metallb.io/allow-shared-ip: "pihole-192.168.200.240"
 spec:
   selector:
     app: pihole
@@ -46,7 +46,7 @@ metadata:
   name: pihole-tcp-lb
   namespace: pihole
   annotations:
-    metallb.io/allow-shared-ip: "true"
+    metallb.io/allow-shared-ip: "pihole-192.168.200.240"
 spec:
   selector:
     app: pihole
