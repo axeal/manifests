@@ -16,7 +16,7 @@ spec:
       interval: 24h
   values:
     crds:
-      enabled: true
+      enabled: false
     prometheus:
       enabled: true
       servicemonitor:
