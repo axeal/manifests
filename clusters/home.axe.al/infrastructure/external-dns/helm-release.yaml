@@ -20,7 +20,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: cloudflare
-            key: token
+            key: api-token
       - name: CF_ZONE_ID
         valueFrom:
           secretKeyRef:

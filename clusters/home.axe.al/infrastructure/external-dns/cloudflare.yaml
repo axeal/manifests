@@ -1,37 +1,20 @@
-apiVersion: v1
-data:
-    token: ENC[AES256_GCM,data:PigcgYqtDjOLRc7ho4K4kGrCEe9v4NkT/S99wrgBdxHUU+FTf6fwrBKSyhDzrh4bouZieUqrQwo=,iv:J5kZvydCsoNrQ2qwX50/40HJXYrzONR7xR4UcjXaUwo=,tag:RYSvXEqVfi+N6z2uK+bgkA==,type:str]
-    zone-id: ENC[AES256_GCM,data:Hl42UMDeEhZA0Dw5JvyP9EnPY4TQOM/HfuTkymCw5Uys7b81+sq3s5FbD4Y=,iv:suwvvWS1fP/yECBGBxHhwqB8jXBkJ+aow8BHqPfFmPo=,tag:7UOBeWpuzEk5NsPBjNd7ZA==,type:str]
-kind: Secret
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
 metadata:
-    creationTimestamp: null
+  name: cloudflare
+  namespace: external-dns
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: bitwarden-secretsmanager
+    kind: ClusterSecretStore
+  target:
     name: cloudflare
-    namespace: external-dns
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    lastmodified: '2021-05-01T16:29:33Z'
-    mac: ENC[AES256_GCM,data:q/PxPLOu5iDzO4M4th/w8bJ0pku5CixZi2kI9tgMhHv/s066MoN7ewH28GFRJkkh82kho7Rk1ZPJa1ERBUDHeDX7aiBSC93hWH0V0YBgjhYkcT+o0HfMqsJV1Pc8UMcBzd0WgncwRhbFx1RfmOtNaMNLGfHK9iZkg9AHKX9ULo4=,iv:9iflKbmPtyhV+UCVXcn832/MvRIfg8YQhsfgcpChPBk=,tag:9KFfajzi0Ulz0VuYkMl9tg==,type:str]
-    pgp:
-    -   created_at: '2021-05-01T16:29:33Z'
-        enc: |
-            -----BEGIN PGP MESSAGE-----
-
-            hQGMA0iwucVVYXgtAQv8DD7irSAaOX6W1DVVYQKSvl20pHEQ7P3/CYRhiBT/7bRV
-            z4M5WIFNLBdGOwu5a6WJqcyvKeG5Ybp3I2NWy6dPIK9wDzoPq42K/g+mjdPXFabR
-            u+FASKi9QgBSk2wfuhrpCtt31tn4Y5GdnhjNzO09RqdRf9Qefus7GteuHJr6LI/j
-            DlGCB8cTWVL8kvWEe27FyVnLMuOXAdObcE3KhgVP4uiCnmN1oM1yMhu1cZ70N/9k
-            K9cxHL6djys/lj4ys39FS5aUrQ8Kt65tkUn2B+/6ICM5Xyp6eYlQ99dP1E4CmcuE
-            cBttPIG62+knka363bNSsCClIrMHUowXMsFdmDdBYKCjuKi7LHvSAdA1jSWNmod9
-            TvFHYJa8eoUwP8Tp/nH65eEpbxgMh+hzehvvCtavKEaQSCTm1NOtrONbIK5smHk+
-            8iIpgcZDfx88iojLQj7VmOSw40u16rS2HQQk8lXJwK6xMbuCurUorgKW7zURfo1X
-            ge6rsD48v19Ufg3lMJWK0lwBIwVDrmTbjzKfdrYz4LwqkVlZz9nhoJk2V+fy/jIA
-            m2p/7PpFFxPKw33ujdqXdtj4IEMcmiaz5j80dU5CF4pYfooVcKmTxIXvt4AUBn/P
-            m6/G8WC1IwmRIpnYjg==
-            =OMye
-            -----END PGP MESSAGE-----
-        fp: AE254F5978665BA581E0B74E2A31290A234B45D8
-    encrypted_regex: ^(data|stringData)$
-    version: 3.6.1
+    creationPolicy: Owner
+  data:
+  - secretKey: api-token
+    remoteRef:
+      key: "external-dns/cloudflare-api-token"
+  - secretKey: zone-id
+    remoteRef:
+      key: "external-dns/cloudflare-zone-id"
