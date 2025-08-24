@@ -54,7 +54,7 @@ spec:
             - name: TUNNEL_ORIGIN_SERVER_NAME
               value: "axe.al"
       volumes:
-        - name: cloudflare
+        - name: cloudflared
           projected:
             sources:
             - name: origin-cert
