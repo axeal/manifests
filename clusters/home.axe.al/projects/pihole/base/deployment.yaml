@@ -34,18 +34,6 @@ spec:
           name: web
         - containerPort: 53
           name: dns
-      - name: pihole-exporter
-        image: ekofr/pihole-exporter:v1.2.0
-        env:
-        - name: PIHOLE_HOSTNAME
-          value: "127.0.0.1"
-        - name: PIHOLE_PASSWORD
-          value: admin
-        - name: PORT
-          value: "9617"
-        ports:
-        - containerPort: 9617
-          name: metrics
       - name: cloudflared
         image: cloudflare/cloudflared:2025.8.1
         env:
