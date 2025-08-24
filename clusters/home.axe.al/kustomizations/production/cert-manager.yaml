@@ -15,9 +15,6 @@ spec:
       kind: HelmRelease
       name: cert-manager
       namespace: cert-manager
-    - apiVersion: cert-manager.io/v1
-      kind: ClusterIssuer
-      name: cluster-issuer
   timeout: 5m
   decryption:
     provider: sops

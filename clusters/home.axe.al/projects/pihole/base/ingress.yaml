@@ -4,7 +4,7 @@ metadata:
   name: pihole
   namespace: pihole
   annotations:
-    cert-manager.io/cluster-issuer: cluster-issuer
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
     nginx.ingress.kubernetes.io/auth-url: http://oauth2-proxy.oauth2-proxy.svc.cluster.local/oauth2/auth
     nginx.ingress.kubernetes.io/auth-signin: https://auth.axe.al/oauth2/start?rd=https://$host$escaped_request_uri
 spec:

@@ -1,4 +1,2 @@
 resources:
   - ../../base
-patchesStrategicMerge:
-  - cluster-issuer.yaml
