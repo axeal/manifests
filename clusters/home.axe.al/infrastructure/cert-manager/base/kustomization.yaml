@@ -6,3 +6,4 @@ resources:
   - cluster-issuer-deploy-job.yaml
   - cloudflare-api-key.yaml
   - cert-manager-dashboard.yaml
+  - selfsigned-issuer.yaml
