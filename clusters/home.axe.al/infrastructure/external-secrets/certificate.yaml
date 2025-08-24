@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: bitwarden-tls-certs
   dnsNames:
-    - bitwarden-sdk-server.default.svc.cluster.local
+    - bitwarden-sdk-server.external-secrets.svc.cluster.local
   privateKey:
     algorithm: ECDSA
     size: 256
