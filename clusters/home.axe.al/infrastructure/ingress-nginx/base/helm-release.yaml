@@ -24,7 +24,7 @@ spec:
       watchIngressWithoutClass: "true"
       kind: DaemonSet
       extraArgs:
-        default-ssl-certificate: ingress-nginx/cloudflare-origin-ca-tls
+        default-ssl-certificate: ingress-nginx/cloudflare-origin-cert-tls
       metrics:
         enabled: true
         serviceMonitor:
