@@ -15,7 +15,7 @@ spec:
     kind: ClusterIssuer
     group: cert-manager.io
 ---
-apiVersion: trust-manager.io/v1aplha1
+apiVersion: trust-manager.io/v1alpha1
 kind: Bundle
 metadata:
   name: selfsigned-ca
