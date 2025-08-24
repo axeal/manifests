@@ -23,12 +23,10 @@ spec:
   sources:
   - secret:
       name: selfsigned-ca-secret
-      namespace: cert-manager
       key: tls.crt
   target:
     configMap:
-      name: selfsigned-ca
       key: ca.crt
     namespaceSelector:
-      matchNames:
-        - external-secrets
+      matchLabels:
+        app.kubernetes.io/name: external-secrets
