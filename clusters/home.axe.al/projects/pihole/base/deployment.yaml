@@ -17,19 +17,17 @@ spec:
     spec:
       containers:
       - name: pihole
-        image: pihole/pihole:2021.10
+        image: pihole/pihole:2025.08.0
         env:
         - name: TZ
           value: "Europe/Berlin"
-        - name: WEBPASSWORD
+        - name: FTLCONF_webserver_api_password
           value: "admin"
-        - name: DNS1
+        - name: FTLCONF_dns_upstreams
           value: 127.0.0.1#5053
-        - name: DNS2
-          value: "no"
-        - name: DNS_BOGUS_PRIV
+        - name: FTLCONF_dns_bogusPriv
           value: "false"
-        - name: DNS_FQDN_REQUIRED
+        - name: FTLCONF_dns_domainNeeded
           value: "true"
         ports:
         - containerPort: 80
@@ -37,7 +35,7 @@ spec:
         - containerPort: 53
           name: dns
       - name: pihole-exporter
-        image: ekofr/pihole-exporter:0.0.9
+        image: ekofr/pihole-exporter:1.2.0
         env:
         - name: PIHOLE_HOSTNAME
           value: "127.0.0.1"
@@ -49,7 +47,7 @@ spec:
         - containerPort: 9617
           name: metrics
       - name: cloudflared
-        image: axeal/cloudflared:2020.11.11
+        image: cloudflare/cloudflared:2025.8.1
         env:
         - name: TUNNEL_DNS_PORT
           value: "5053"
