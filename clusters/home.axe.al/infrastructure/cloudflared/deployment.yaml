@@ -59,13 +59,13 @@ spec:
             sources:
             - name: origin-cert
               secret:
-                secretName: origin-cert
+                name: origin-cert
                 items:
                 - key: cert.pem
                   path: cert.pem
             - name: tunnel-credentials
               secret:
-                secretName: tunnel-credentials
+                name: tunnel-credentials
                 items:
                 - key: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.json
                   path: credentials.json
