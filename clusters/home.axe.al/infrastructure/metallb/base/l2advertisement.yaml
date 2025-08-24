@@ -3,3 +3,6 @@ kind: L2Advertisement
 metadata:
   name: all
   namespace: metallb-system
+spec:
+  interfaces:
+  - eth0
