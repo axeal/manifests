@@ -19,7 +19,7 @@ spec:
   data:
   - secretKey: cert
     remoteRef:
-      key: "ingress-ngiinx/cloudflare-origin-cert"
+      key: "ingress-nginx/cloudflare-origin-cert"
   - secretKey: key
     remoteRef:
-      key: "ingress-ngiinx/cloudflare-origin-key"
+      key: "ingress-nginx/cloudflare-origin-key"
