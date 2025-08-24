@@ -19,7 +19,7 @@ spec:
   values:
     crds:
       upgradeJob:
-        enabled: true
+        enabled: false
     prometheus-node-exporter:
       extraArgs:
           - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
