@@ -4,5 +4,8 @@ metadata:
   name: all
   namespace: metallb-system
 spec:
+  IPAddressPools:
+   - production
+   - kube-api
   interfaces:
   - eth0
