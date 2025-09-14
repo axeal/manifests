@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: endpoint-copier-operator
+  namespace: endpoint-copier-operator
+spec:
+  interval: 24h
+  chart:
+    spec:
+      chart: endpoint-copier-operator
+      version: '0.3.0'
+      sourceRef:
+        kind: HelmRepository
+        name: suse-edge
+        namespace: endpoint-copier-operator
+      interval: 24h
