@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-vip
+  namespace: default
+  annotations:
+    endpoint-copier/enabled: "true"
+    endpoint-copier/default-service-name: "kubernetes"
+    endpoint-copier/default-service-namespace: "default"
+    metallb.io/loadBalancerIPs: 192.168.200.200
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: k8s-api
+    port: 6443
+    protocol: TCP
+    targetPort: 6443
+  sessionAffinity: None
+  type: LoadBalancer
