@@ -15,7 +15,3 @@ spec:
       kind: Deployment
       name: external-dns
       namespace: external-dns
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg

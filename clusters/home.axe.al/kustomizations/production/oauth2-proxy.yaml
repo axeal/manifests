@@ -16,7 +16,3 @@ spec:
       name: oauth2-proxy
       namespace: oauth2-proxy
   timeout: 5m
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg

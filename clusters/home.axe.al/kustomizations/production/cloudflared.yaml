@@ -15,7 +15,3 @@ spec:
       kind: Deployment
       name: argo-tunnel
       namespace: cloudflared
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg

@@ -23,7 +23,3 @@ spec:
       kind: ClusterIssuer
       name: selfsigned-ca-issuer
   timeout: 5m
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg

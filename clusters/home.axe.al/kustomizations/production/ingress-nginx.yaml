@@ -18,7 +18,3 @@ spec:
   timeout: 5m
   dependsOn:
     - name: metallb
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg

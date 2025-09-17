@@ -20,7 +20,3 @@ spec:
       name: speaker
       namespace: metallb-system
   timeout: 5m
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg
