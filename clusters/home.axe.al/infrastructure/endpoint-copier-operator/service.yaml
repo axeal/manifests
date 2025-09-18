@@ -7,7 +7,9 @@ metadata:
     endpoint-copier/enabled: "true"
     endpoint-copier/default-service-name: "kubernetes"
     endpoint-copier/default-service-namespace: "default"
-    metallb.io/loadBalancerIPs: 192.168.200.200
+    lbipam.cilium.io/ips: 192.168.200.200
+  labels:
+    app: kubernetes-vip
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:

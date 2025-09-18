@@ -19,8 +19,7 @@ spec:
       service:
         externalTrafficPolicy: Cluster
         annotations:
-          metallb.io/allow-shared-ip: "192.168.200.240"
-          metallb.io/loadBalancerIPs: 192.168.200.240
+          lbipam.cilium.io/ips: 192.168.200.240
       watchIngressWithoutClass: "true"
       kind: DaemonSet
       extraArgs:

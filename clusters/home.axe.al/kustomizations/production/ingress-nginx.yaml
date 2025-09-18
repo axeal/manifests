@@ -16,5 +16,3 @@ spec:
       name: ingress-nginx
       namespace: ingress-nginx
   timeout: 5m
-  dependsOn:
-    - name: metallb
