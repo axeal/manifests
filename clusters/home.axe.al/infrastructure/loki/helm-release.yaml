@@ -31,10 +31,6 @@ spec:
             period: 24h
           object_store: filesystem # we're storing on filesystem so there's no real persistence here.
           schema: v13
-    gateway:
-      service:
-        labels:
-          prometheus.io/service-monitor: "false"
     singleBinary:
       replicas: 1
     read:
