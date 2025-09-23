@@ -32,7 +32,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
       containers:
         - name: cloudflared
-          image: cloudflare/cloudflared:2025.8.1
+          image: cloudflare/cloudflared:2025.9.1
           command: ["cloudflared", "tunnel", "run"]
           args: ["--credentials-file", "/etc/cloudflared/credentials.json", "4e66423e-bc9e-46b5-90fa-fe0744fb224c"]
           ports:
