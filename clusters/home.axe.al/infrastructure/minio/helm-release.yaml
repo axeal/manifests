@@ -16,6 +16,8 @@ spec:
       interval: 24h
   values:
     mode: standalone
+    image:
+      tag: RELEASE.2025-07-23T15-54-02Z
     persistence:
       enabled: true
       size: 50Gi
