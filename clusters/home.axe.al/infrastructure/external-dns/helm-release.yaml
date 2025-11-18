@@ -33,6 +33,7 @@ spec:
     extraArgs:
       - "--zone-id-filter=$(CF_ZONE_ID)"
       - "--cloudflare-proxied"
+      - "--exclude-target-net=192.168.200.0/24"
     provider: cloudflare
     txtPrefix: external-dns.
     txtOwnerId: home.axe.al
