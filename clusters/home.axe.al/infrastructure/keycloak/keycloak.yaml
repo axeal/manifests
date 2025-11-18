@@ -173,6 +173,8 @@ spec:
               value: "keycloak"
             - name: POSTGRES_LOG_STATEMENT
               value: "all"
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           ports:
             - name: postgres
               containerPort: 5432
