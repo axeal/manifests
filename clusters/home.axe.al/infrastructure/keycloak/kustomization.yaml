@@ -1,0 +1,7 @@
+namespace: keycloak
+resources:
+- namespace.yaml
+- keycloak-creds-secret.yaml
+- postgres-creds-secret.yaml
+- keycloak.yaml
+- keycloak-ingress.yaml
