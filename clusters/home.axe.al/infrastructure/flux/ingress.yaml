@@ -4,6 +4,7 @@ metadata:
   name: receiver
   namespace: flux-system
   annotations:
+    kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-issuer
     external-dns.alpha.kubernetes.io/target: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.cfargotunnel.com
 spec:
