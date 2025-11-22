@@ -49,8 +49,6 @@ spec:
               value: "0.0.0.0:5000"
             - name: TUNNEL_METRICS_UPDATE_FREQ
               value: "30s"
-            - name: TUNNEL_ORIGIN_SERVER_NAME
-              value: "axe.al"
       volumes:
         - name: cloudflared
           projected:
