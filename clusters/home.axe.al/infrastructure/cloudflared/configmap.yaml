@@ -3,6 +3,8 @@ kind: ConfigMap
 metadata:
   name: cloudflared-config
   namespace: cloudflared
+  labels:
+    reconcile.fluxcd.io/watch: Enabled
 data:
   config.yml: |
     tunnel: 4e66423e-bc9e-46b5-90fa-fe0744fb224c
