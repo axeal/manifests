@@ -11,6 +11,8 @@ data:
     credentials-file: /etc/cloudflared/credentials.json
 
     ingress:
-    - service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
+    - hostname: "*.axe.al"
+      service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
       originRequest:
         matchSNItoHost: true
+    - service: http_status:404
