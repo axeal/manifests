@@ -10,5 +10,5 @@ data:
 
     ingress:
     - service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
-      originRequst:
+      originRequest:
         matchSNItoHost: true
