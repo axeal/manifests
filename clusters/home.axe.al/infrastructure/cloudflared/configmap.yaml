@@ -13,4 +13,5 @@ data:
     ingress:
     - service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
       originRequest:
-        matchSNItoHost: true
+        originServerName: "*.axe.al"
+        matchSNItoHost: "true"
