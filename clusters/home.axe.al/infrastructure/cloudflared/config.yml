@@ -6,4 +6,5 @@ ingress:
   service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
   originRequest:
     matchSNItoHost: true
+    http2Origin: true
 - service: http_status:404
