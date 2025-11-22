@@ -33,8 +33,8 @@ spec:
       containers:
         - name: cloudflared
           image: cloudflare/cloudflared:2025.9.1
-          command: ["cloudflared", "tunnel", "run"]
-          args: ["--credentials-file", "/etc/cloudflared/credentials.json", "4e66423e-bc9e-46b5-90fa-fe0744fb224c"]
+          command: ["cloudflared"]
+          args: ["tunnel", "--config", "/etc/cloudflared/config.yml", "run"]
           ports:
             - containerPort: 5000
               name: metrics
@@ -43,8 +43,6 @@ spec:
               mountPath: "/etc/cloudflared"
               readOnly: true
           env:
-            - name: TUNNEL_URL
-              value: "https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443"
             - name: NO_AUTOUPDATE
               value: "true"
             - name: TUNNEL_METRICS
@@ -69,3 +67,9 @@ spec:
                 items:
                 - key: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.json
                   path: credentials.json
+            - name: cloudflared-config
+              configMap:
+                name: cloudflared-config
+                items:
+                - key: config.yml
+                  path: config.yml
