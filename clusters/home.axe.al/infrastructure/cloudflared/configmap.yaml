@@ -7,7 +7,7 @@ metadata:
     reconcile.fluxcd.io/watch: Enabled
 data:
   config.yml: |
-    tunnel: 4e66423e-bc9e-46b5-90fa-fe0744fb224c
+    tunnel: 12406f4c-ecab-4674-a0ea-d4fb72f8f8e4
     credentials-file: /etc/cloudflared/credentials.json
 
     ingress:

@@ -63,7 +63,7 @@ spec:
               secret:
                 name: tunnel-credentials
                 items:
-                - key: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.json
+                - key: 12406f4c-ecab-4674-a0ea-d4fb72f8f8e4.json
                   path: credentials.json
             - name: cloudflared-config
               configMap:

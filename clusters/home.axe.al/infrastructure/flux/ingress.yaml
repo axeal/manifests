@@ -6,7 +6,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-issuer
-    external-dns.alpha.kubernetes.io/target: 4e66423e-bc9e-46b5-90fa-fe0744fb224c.cfargotunnel.com
+    external-dns.alpha.kubernetes.io/target: 12406f4c-ecab-4674-a0ea-d4fb72f8f8e4.cfargotunnel.com
 spec:
   tls:
   - hosts:
