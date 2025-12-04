@@ -31,7 +31,8 @@ spec:
     ports:
       websecure:
         forwardedHeaders:
-          insecure: true
+          trustedIPs:
+          - 10.0.0.0/8
     providers:
       kubernetesCRD:
         enabled: true
