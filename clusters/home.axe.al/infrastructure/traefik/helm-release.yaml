@@ -25,6 +25,9 @@ spec:
       enabled: false
     gatewayClass:
       enabled: false
+    logs:
+      access:
+        enabled: true
     providers:
       kubernetesCRD:
         enabled: true
