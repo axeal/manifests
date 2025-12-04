@@ -2,6 +2,11 @@ tunnel: 12406f4c-ecab-4674-a0ea-d4fb72f8f8e4
 credentials-file: /etc/cloudflared/credentials.json
 
 ingress:
+- hostname: "keycloak.axe.al"
+  service: https://traefik.traefik.svc.cluster.local:443
+  originRequest:
+    matchSNItoHost: true
+    http2Origin: true
 - hostname: "*.axe.al"
   service: https://ingress-nginx-controller.ingress-nginx.svc.cluster.local:443
   originRequest:
