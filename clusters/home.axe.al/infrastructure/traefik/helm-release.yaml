@@ -31,7 +31,7 @@ spec:
         format: json
         fields:
           headers:
-            defaultMode: keep
+            defaultmode: keep
     ports:
       websecure:
         forwardedHeaders:
