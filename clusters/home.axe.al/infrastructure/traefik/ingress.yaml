@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-dashboard
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+    external-dns.alpha.kubernetes.io/target: 12406f4c-ecab-4674-a0ea-d4fb72f8f8e4.cfargotunnel.com
+    traefik.ingress.kubernetes.io/router.middlewares: traefik-oauth2-proxy@kubernetescrd
+spec:
+  rules:
+  - host: traefik.axe.al
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: traefik-dashboard
+            port:
+              number: 8080

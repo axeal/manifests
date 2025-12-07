@@ -15,6 +15,8 @@ spec:
         namespace: traefik
       interval: 24h
   values:
+    api:
+      dashboard: true
     deployment:
       kind: DaemonSet
     ingressClass:

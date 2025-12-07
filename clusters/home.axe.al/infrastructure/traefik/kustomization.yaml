@@ -2,3 +2,6 @@ resources:
   - namespace.yaml
   - helm-repository.yaml
   - helm-release.yaml
+  - oauth2-middleware.yaml
+  - service.yaml
+  - ingress.yaml
