@@ -9,6 +9,10 @@ metadata:
     external-dns.alpha.kubernetes.io/target: 12406f4c-ecab-4674-a0ea-d4fb72f8f8e4.cfargotunnel.com
     traefik.ingress.kubernetes.io/router.middlewares: traefik-oauth2-proxy@kubernetescrd
 spec:
+  tls:
+  - hosts:
+    - traefik.axe.al
+    secretName: traefik-ingress-cert
   rules:
   - host: traefik.axe.al
     http:
@@ -20,7 +24,3 @@ spec:
             name: traefik-dashboard
             port:
               number: 8080
-    tls:
-    - hosts:
-      - traefik.axe.al
-      secretName: traefik-ingress-cert
