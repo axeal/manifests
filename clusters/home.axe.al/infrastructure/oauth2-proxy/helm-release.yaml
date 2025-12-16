@@ -35,7 +35,7 @@ spec:
       cookie-domain: .axe.al
       scope: "user:email read:org"
       github-user: axeal
-      upstreams: static://202
+      upstream: static://202
       reverse-proxy: true
       skip-provider-button: true
       redirect-url: "/oauth2/callback"
