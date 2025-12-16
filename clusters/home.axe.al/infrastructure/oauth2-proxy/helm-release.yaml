@@ -38,7 +38,7 @@ spec:
       upstream: static://202
       reverse-proxy: true
       skip-provider-button: true
-      redirect-url: "/oauth2/callback"
+      redirect-url: "https://auth.axe.al/oauth2/callback"
     readinessProbe:
       enabled: false
     replicaCount: 2
