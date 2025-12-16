@@ -22,7 +22,7 @@ spec:
       hosts:
       - auth.axe.al
       annotations:
-        kubernetes.io/ingress.class: nginx
+        kubernetes.io/ingress.class: traefik
         cert-manager.io/cluster-issuer: letsencrypt-issuer
         external-dns.alpha.kubernetes.io/target: 12406f4c-ecab-4674-a0ea-d4fb72f8f8e4.cfargotunnel.com
       tls:
