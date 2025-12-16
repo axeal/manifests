@@ -18,4 +18,3 @@ spec:
   timeout: 5m
   dependsOn:
     - name: longhorn
-    - name: ingress-nginx

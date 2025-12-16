@@ -16,5 +16,3 @@ spec:
       name: longhorn
       namespace: longhorn-system
   timeout: 5m
-  dependsOn:
-    - name: ingress-nginx

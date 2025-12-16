@@ -16,5 +16,3 @@ spec:
       name: kube-prometheus-stack
       namespace: monitoring
   timeout: 5m
-  dependsOn:
-    - name: ingress-nginx
