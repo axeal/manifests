@@ -7,8 +7,7 @@ spec:
   interval: 24h
   chart:
     spec:
-      chart: garage
-      version: '0.9.1'
+      chart: ./script/helm/garage
       sourceRef:
         kind: GitRepository
         name: garage
