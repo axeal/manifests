@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alloy-config
+  namespace: pyroscope
+data:
+  config.alloy: |
+    discovery.relabel "local_node" {
+      targets = [{
+        __address__ = "127.0.0.1:6443",  # localhost supervisor port
+        node = env("HOSTNAME")
+      }]
+    }
+
+    pyroscope.scrape "k3s_pprof" {
+      targets    = discovery.relabel.local_node.output
+      forward_to = [pyroscope.write.pyroscope.receiver]
+
+      tls_config {
+        insecure_skip_verify = true
+      }
+
+      # Go pprof profiles
+      profile_cpu {
+        path = "/debug/pprof/profile?seconds=15"
+      }
+      profile_memory {
+        path = "/debug/pprof/heap"
+      }
+      profile_mutex {
+        path = "/debug/pprof/mutex"
+      }
+
+      relabel_rules = [
+        {source_labels=["node"], target_label="instance"},
+        {target_label="job", replacement="k3s-pprof"}
+      ]
+    }
+
+    pyroscope.write "pyroscope" {
+      endpoint {
+        url = "http://pyroscope.pyroscope.svc.cluster.local:4040"
+      }
+    }

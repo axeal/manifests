@@ -35,6 +35,12 @@ spec:
         url: http://loki.logging:3100
         editable: false
         basicAuth: false
+      - name: Pyroscope
+        type: grafana-pyroscope-datasource
+        uid: pyroscope
+        url: http://pyroscope-querier.pyroscope.svc.cluster.local.:4040/
+      env:
+        GF_PLUGINS_PREINSTALL_SYNC: grafana-pyroscope-app
       ingress:
         enabled: true
         annotations:
