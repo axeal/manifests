@@ -38,7 +38,7 @@ spec:
       - name: Pyroscope
         type: grafana-pyroscope-datasource
         uid: pyroscope
-        url: http://pyroscope-querier.pyroscope.svc.cluster.local.:4040/
+        url: http://pyroscope.pyroscope.svc.cluster.local.:4040/
       env:
         GF_PLUGINS_PREINSTALL_SYNC: grafana-pyroscope-app
       ingress:
