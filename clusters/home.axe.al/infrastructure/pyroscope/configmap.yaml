@@ -5,11 +5,24 @@ metadata:
   namespace: pyroscope
 data:
   config.alloy: |
+    discovery.kubernetes "local_pods" {
+      role = "pod"
+    }
+
     discovery.relabel "local_node" {
-      targets = [{
-        __address__ = "127.0.0.1:6443",
-        node = env("HOSTNAME")
-      }]
+      targets = discovery.kubernetes.local_pods.targets
+
+      rule {
+        source_labels = ["__meta_kubernetes_pod_node_name"]
+        regex         = env("HOSTNAME")
+        action        = "keep"
+      }
+
+      rule {
+        source_labels = ["__address__"]
+        target_label  = "scrape_target"
+        replacement   = "127.0.0.1:6443"
+      }
     }
 
     pyroscope.scrape "k3s_pprof" {
@@ -20,20 +33,27 @@ data:
         insecure_skip_verify = true
       }
 
-      # Go pprof profiles
       profile_cpu {
         path = "/debug/pprof/profile?seconds=15"
       }
+
       profile_memory {
         path = "/debug/pprof/heap"
       }
+
       profile_mutex {
         path = "/debug/pprof/mutex"
       }
 
       relabel_rules = [
-        {source_labels=["node"], target_label="instance"},
-        {target_label="job", replacement="k3s-pprof"}
+        {
+          source_labels = ["__meta_kubernetes_pod_node_name"]
+          target_label  = "node"
+        },
+        {
+          target_label  = "job"
+          replacement   = "k3s-pprof"
+        }
       ]
     }
 
