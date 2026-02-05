@@ -51,7 +51,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
-          image: bloomberg/goldpinger:3.10.2
+          image: bloomberg/goldpinger:3.10.3
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
@@ -121,4 +121,3 @@ subjects:
   - kind: ServiceAccount
     name: goldpinger
     namespace: goldpinger
-
