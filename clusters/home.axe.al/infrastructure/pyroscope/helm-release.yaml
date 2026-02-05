@@ -34,8 +34,8 @@ spec:
   values:
     controller:
       hostNetwork: true
-    configMap:
-      alloy:
+    alloy:
+      configMap:
         create: false
         name: alloy-config
         key: config.alloy
