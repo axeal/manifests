@@ -31,10 +31,10 @@ spec:
         name: grafana
         namespace: pyroscope
       interval: 24h
-      values:
-        controller:
-          hostNetwork: true
-        configMap:
-          create: false
-          name: alloy-config
-          key: config.alloy
+  values:
+    controller:
+      hostNetwork: true
+    configMap:
+      create: false
+      name: alloy-config
+      key: config.alloy
