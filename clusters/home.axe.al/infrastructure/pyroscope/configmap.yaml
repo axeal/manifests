@@ -5,33 +5,17 @@ metadata:
   namespace: pyroscope
 data:
   config.alloy: |
-    discovery.kubernetes "local_pods" {
-      role = "pod"
+    discovery.static "k3s_pprof_targets" {
+      targets = [
+        {
+          __address__ = "127.0.0.1:6443"
+          node        = sys.env("HOSTNAME")
+        },
+      ]
     }
 
-    discovery.relabel "local_node" {
-      targets = discovery.kubernetes.local_pods.targets
-
-      rule {
-        source_labels = ["__meta_kubernetes_pod_node_name"]
-        regex         = sys.env("HOSTNAME")
-        action        = "keep"
-      }
-
-      rule {
-        source_labels = ["__address__"]
-        target_label  = "scrape_target"
-        replacement   = "127.0.0.1:6443"
-      }
-    }
-
-    discovery.relabel "k3s_pprof_targets" {
-      targets = discovery.relabel.local_node.output
-
-      rule {
-        source_labels = ["__meta_kubernetes_pod_node_name"]
-        target_label  = "node"
-      }
+    discovery.relabel "k3s_pprof_labels" {
+      targets = discovery.static.k3s_pprof_targets.targets
 
       rule {
         target_label = "job"
@@ -40,7 +24,7 @@ data:
     }
 
     pyroscope.scrape "k3s_pprof" {
-      targets    = discovery.relabel.k3s_pprof_targets.output
+      targets    = discovery.relabel.k3s_pprof_labels.output
       forward_to = [pyroscope.write.pyroscope.receiver]
 
       tls_config {
