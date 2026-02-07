@@ -25,5 +25,5 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-issuer
         traefik.ingress.kubernetes.io/router.middlewares: traefik-oauth2-proxy@kubernetescrd
     defaultBackupStore:
-      backupTarget: "smb://unas.axe.al/longhorn"
+      backupTarget: "cifs://unas.axe.al/longhorn"
       backupTargetCredentialSecret: longhorn-smb-secret
