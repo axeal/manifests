@@ -5,17 +5,11 @@ metadata:
   namespace: pyroscope
 data:
   config.alloy: |
-    discovery.static "k3s_pprof_targets" {
-      targets = [
-        {
-          __address__ = "127.0.0.1:6443"
-          node        = sys.env("HOSTNAME")
-        },
-      ]
-    }
-
     discovery.relabel "k3s_pprof_labels" {
-      targets = discovery.static.k3s_pprof_targets.targets
+      targets = [{
+        __address__ = "127.0.0.1:6443",
+        node        = sys.env("HOSTNAME"),
+      },]
 
       rule {
         target_label = "job"
@@ -40,7 +34,7 @@ data:
           enabled = true
         }
 
-        profile.memory { // disable memory, use godeltaprof_memory instead
+        profile.memory {
           enabled = false
         }
 
@@ -48,7 +42,7 @@ data:
           enabled = true
         }
 
-        profile.mutex { // disable mutex, use godeltaprof_mutex instead
+        profile.mutex {
           enabled = false
         }
 
@@ -56,7 +50,7 @@ data:
           enabled = true
         }
 
-        profile.block { // disable block, use godeltaprof_block instead
+        profile.block {
           enabled = false
         }
 
@@ -64,7 +58,6 @@ data:
           enabled = true
         }
       }
-
     }
 
     pyroscope.write "pyroscope" {
