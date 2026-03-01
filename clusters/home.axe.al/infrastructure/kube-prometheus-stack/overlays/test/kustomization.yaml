@@ -1,4 +1,4 @@
 resources:
-  - ../../base
-patchesStrategicMerge:
-  - helm-release.yaml
+- ../../base
+patches:
+- path: helm-release.yaml
