@@ -17,4 +17,6 @@ spec:
   values:
     bitwarden-sdk-server:
       enabled: true
+      deploymentAnnotations:
+        reloader.stakater.com/auto: "true"
     installCRDs: false
