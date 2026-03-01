@@ -14,10 +14,10 @@ spec:
         name: grafana
         namespace: pyroscope
       interval: 24h
-    values:
-      pyroscope:
-        extraArgs:
-          log.level: info
+  values:
+    pyroscope:
+      extraArgs:
+        log.level: info
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
