@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homebridge-headless
+  namespace: homebridge
+  labels:
+    app: homebridge
+spec:
+  clusterIP: None
+  selector:
+    app: homebridge
