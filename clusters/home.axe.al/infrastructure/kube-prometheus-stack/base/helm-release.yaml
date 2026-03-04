@@ -89,6 +89,7 @@ spec:
               storageClassName: local-path
     prometheusOperator:
       kubeletEndpointsEnabled: false
+      kubeletEndpointSliceEnabled: true
     kubeEtcd:
       enabled: false
     kubeProxy:
