@@ -87,6 +87,8 @@ spec:
               accessModes:
               - ReadWriteOnce
               storageClassName: local-path
+    prometheusOperator:
+      kubeletEndpointsEnabled: false
     kubeEtcd:
       enabled: false
     kubeProxy:
