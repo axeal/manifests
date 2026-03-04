@@ -78,6 +78,7 @@ spec:
           cluster: home.axe.al
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
+        serviceDiscoveryRole: "EndpointSlice"
         storageSpec:
           volumeClaimTemplate:
             spec:
