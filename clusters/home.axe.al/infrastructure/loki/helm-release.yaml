@@ -15,7 +15,7 @@ spec:
         namespace: logging
       interval: 24h
   values:
-    global:
+    singleBinary:
       extraArgs:
         - -log.level=warn
     deploymentMode: SingleBinary
