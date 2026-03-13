@@ -15,11 +15,13 @@ spec:
         namespace: logging
       interval: 24h
   values:
+    global:
+      extraArgs:
+        - -log.level=warn
     deploymentMode: SingleBinary
     loki:
       commonConfig:
         replication_factor: 1
-        log_level: warn
       storage:
         type: 'filesystem'
       auth_enabled: false
