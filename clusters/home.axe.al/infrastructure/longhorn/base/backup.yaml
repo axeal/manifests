@@ -10,4 +10,5 @@ spec:
   - default
   retain: 28  # Keep 28 backups
   concurrency: 1
-  full-backup-interval: 7  # Full backup every 7 days
+  parameters:
+    full-backup-interval: 7  # Full backup every 7 days
