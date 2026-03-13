@@ -15,9 +15,6 @@ spec:
         namespace: logging
       interval: 24h
   values:
-    singleBinary:
-      extraArgs:
-        - -log.level=warn
     deploymentMode: SingleBinary
     loki:
       commonConfig:
@@ -36,6 +33,8 @@ spec:
           schema: v13
     singleBinary:
       replicas: 1
+      extraArgs:
+        - -log.level=warn
     read:
       replicas: 0
     backend:
