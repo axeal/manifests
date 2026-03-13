@@ -19,6 +19,8 @@ spec:
     loki:
       commonConfig:
         replication_factor: 1
+        server:
+          log_level: warn
       storage:
         type: 'filesystem'
       auth_enabled: false
