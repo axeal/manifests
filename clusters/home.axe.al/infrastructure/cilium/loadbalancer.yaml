@@ -21,14 +21,13 @@ spec:
 apiVersion: cilium.io/v2
 kind: CiliumLoadBalancerIPPool
 metadata:
-  name: ingress-nginx
+  name: home-assistant
 spec:
   blocks:
   - cidr: "192.168.200.240/32"
   serviceSelector:
     matchLabels:
-      app.kubernetes.io/name: ingress-nginx
-      app.kubernetes.io/component: controller
+      app: home-assistant
 ---
 apiVersion: cilium.io/v2
 kind: CiliumLoadBalancerIPPool
