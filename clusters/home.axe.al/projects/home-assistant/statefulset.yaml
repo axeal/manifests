@@ -14,8 +14,29 @@ spec:
       labels:
         app: home-assistant
     spec:
+      initContainers:
+      - name: iptables-setup
+        image: alpine:latest
+        securityContext:
+          privileged: true
+        command: ["/bin/sh"]
+        args:
+        - -c
+        - |
+          apk add --no-cache iptables
+          iptables -t nat -A OUTPUT -p udp -d 224.0.0.251 --dport 5353 -j DNAT --to-destination 192.168.200.255:5353
+          iptables -t nat -A POSTROUTING -p udp --dport 5353 -j MASQUERADE
+        volumeMounts:
+        - name: iptables
+          mountPath: /etc/iptables
       dnsPolicy: Default
       containers:
+      - name: debug
+        image: alpine:latest
+        securityContext:
+          privileged: true
+        command: ["/bin/sh"]
+        args: ["-c", "sleep 6000"]
       - name: home-assistant
         image: ghcr.io/home-assistant/home-assistant:stable
         ports:
@@ -39,6 +60,9 @@ spec:
         env:
         - name: TZ
           value: Europe/Berlin
+  volumes:
+  - name: iptables
+    emptyDir: {}
   volumeClaimTemplates:
   - metadata:
       name: config
