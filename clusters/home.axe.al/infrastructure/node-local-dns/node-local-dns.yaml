@@ -172,7 +172,7 @@ spec:
         operator: "Exists"
       containers:
       - name: node-cache
-        image: registry.k8s.io/dns/k8s-dns-node-cache:1.26.4
+        image: registry.k8s.io/dns/k8s-dns-node-cache:1.27.1
         resources:
           requests:
             cpu: 25m
@@ -228,4 +228,3 @@ spec:
           defaultMode: 420
           name: coredns
         name: k3s-config-volume
-
