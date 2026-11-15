@@ -29,20 +29,20 @@ spec:
       enabled: false
     gatewayClass:
       enabled: false
-    logs:
-      access:
-        enabled: true
-        format: json
-        fields:
-          headers:
-            defaultmode: keep
+    accessLog:
+      enabled: true
+      format: json
+      fields:
+        headers:
+          defaultMode: keep
     ports:
       web:
-        redirections:
-          entryPoint:
-            to: websecure
-            scheme: https
-            permanent: true
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
       websecure:
         forwardedHeaders:
           trustedIPs:
